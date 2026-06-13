@@ -1,0 +1,44 @@
+Struktur folder zennyx-website
+📁 --> folder
+📄 --> file
+
+|-📁 __notes
+|-📁 .next
+|-📁 app
+|-📁 components
+  |-📁 layout
+  |-📁 ui
+|-📁 content
+  |-📁 devlogs
+    |-📄 kenapa-kami-memulai-zennyx.md
+    |-📄 membangun-game-beat-em-up-pertama.md
+    |-📄 scope-dulu-sebelum-mimpi-besar.md
+  |-📄 games.json
+  |-📄 site.json
+  |-📄 socials.json
+  |-📄 team.json
+|-📁 lib
+  |-📄 content.ts
+  |-📄 devlogs.ts
+  |-📄 games.ts
+  |-📄 site.ts
+  |-📄 socials.ts
+  |-📄 team.ts
+|-📁 node_modules
+|-📁 public
+|-📁 types
+  |-📄 common.ts
+  |-📄 devlog.ts
+  |-📄 game.ts
+  |-📄 index.ts
+  |-📄 site.ts
+  |-📄 social.ts
+  |-📄 team.ts
+|-📄 .gitignore
+|-📄 eslint.config.mjs
+|-📄 next-env.d.ts
+|-📄 next.config.ts
+|-📄 package-lock.json
+|-📄 package.json
+|-📄 postcss.config.mjs
+|-📄 tsconfig.json

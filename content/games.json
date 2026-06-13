@@ -1,0 +1,104 @@
+[
+  {
+    "title": "Untitled Andara Beat 'em Up",
+    "slug": "andara-beat-em-up",
+    "status": "Active Production",
+    "productionType": "Current Main Project",
+    "isFeatured": true,
+    "isPublic": true,
+    "order": 1,
+    "summary": "Game pertama Zennyx Interactive Studio adalah side-scrolling action beat 'em up berlatar Kota Andara, sebuah kota fiksi bernuansa urban yang terinspirasi dari kehidupan jalanan dan konflik manusia.",
+    "shortDescription": "Side-scrolling action beat 'em up berlatar Kota Andara, kota fiksi urban yang keras, padat, dan penuh konflik.",
+    "description": "Untitled Andara Beat 'em Up adalah proyek game pertama Zennyx Interactive Studio. Game ini dirancang sebagai side-scrolling action beat 'em up dengan fokus pada combat sederhana, ritme aksi yang cepat, konflik jalanan, dan latar kota fiksi bernama Andara. Untuk tahap awal, proyek ini tidak mengejar scope besar seperti open world, RPG kompleks, atau narasi bercabang. Fokus utamanya adalah membuat prototype kecil yang playable, jelas, dan bisa menjadi fondasi untuk pengembangan berikutnya.",
+    "genre": [
+      "Side-scrolling action",
+      "Beat 'em up",
+      "Action game"
+    ],
+    "theme": [
+      "Urban conflict",
+      "Street violence",
+      "Human struggle",
+      "Premanisme",
+      "Kota fiksi"
+    ],
+    "setting": {
+      "name": "Kota Andara",
+      "description": "Kota Andara adalah kota fiksi bernuansa urban yang terinspirasi dari suasana kota besar, konflik jalanan, gang sempit, kehidupan keras, dan tekanan sosial di lingkungan perkotaan.",
+      "inspiration": [
+        "Jakarta-inspired urban atmosphere",
+        "Gang sempit",
+        "Kota malam",
+        "Aspal basah",
+        "Konflik jalanan"
+      ]
+    },
+    "platforms": [
+      "PC"
+    ],
+    "targetBuild": "Prototype",
+    "targetRelease": "To be announced",
+    "developmentStage": {
+      "current": "Early prototype planning",
+      "nextMilestone": "Playable prototype",
+      "notes": "Saat ini fokus proyek adalah menyusun fondasi gameplay, scope prototype, dan arah visual/gameplay sebelum masuk ke vertical slice atau demo publik."
+    },
+    "gameplayFocus": {
+      "title": "Gameplay Focus",
+      "description": "Fokus gameplay awal adalah membuat aksi beat 'em up yang sederhana, responsif, dan bisa dikembangkan bertahap.",
+      "points": [
+        "Pergerakan karakter yang nyaman",
+        "Basic attack",
+        "Simple combo",
+        "Musuh dasar",
+        "Health system",
+        "Stage clear sederhana",
+        "UI dasar untuk combat"
+      ]
+    },
+    "prototypeScope": [
+      "Player movement",
+      "Basic attack",
+      "Simple combo",
+      "Basic enemy",
+      "Health system",
+      "Small test stage",
+      "Stage clear condition",
+      "Basic combat UI"
+    ],
+    "deferredFeatures": [
+      "Open world",
+      "Multiplayer",
+      "RPG system kompleks",
+      "Skill tree besar",
+      "Heavy narrative",
+      "Quest bercabang",
+      "Cutscene panjang",
+      "Banyak karakter playable",
+      "Sistem ekonomi kompleks"
+    ],
+    "media": {
+      "coverImage": "/images/games/andara-beat-em-up/cover-placeholder.png",
+      "thumbnail": "/images/games/andara-beat-em-up/thumb-placeholder.png",
+      "heroImage": "/images/games/andara-beat-em-up/hero-placeholder.png",
+      "gallery": []
+    },
+    "links": {
+      "devlog": "/devlog",
+      "itch": "",
+      "steam": "",
+      "trailer": "",
+      "demo": ""
+    },
+    "relatedDevlogs": [
+      "kenapa-kami-memulai-zennyx",
+      "membangun-game-beat-em-up-pertama",
+      "scope-dulu-sebelum-mimpi-besar"
+    ],
+    "seo": {
+      "title": "Untitled Andara Beat 'em Up",
+      "description": "Game pertama Zennyx Interactive Studio: side-scrolling action beat 'em up berlatar Kota Andara, kota fiksi urban yang keras dan penuh konflik.",
+      "ogImage": "/og/andara-beat-em-up-og.png"
+    }
+  }
+]

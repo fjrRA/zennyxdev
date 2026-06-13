@@ -1,0 +1,82 @@
+{
+  "primaryContact": {
+    "type": "email",
+    "label": "Email",
+    "value": "hello@zennyxstudio.com",
+    "href": "mailto:hello@zennyxstudio.com",
+    "description": "For general inquiries, collaboration, and studio-related contact."
+  },
+  "contactMessage": {
+    "title": "Contact & Follow",
+    "description": "Zennyx Interactive Studio is still in its early stage. Follow our progress, read our devlogs, or reach out for collaboration and general inquiries.",
+    "note": "Kami masih berada di tahap awal, tetapi kami sedang membangun. Untuk pertanyaan umum, kolaborasi, atau follow progress Zennyx, kamu bisa menghubungi kami melalui email atau social links resmi."
+  },
+  "links": [
+    {
+      "name": "Email",
+      "type": "email",
+      "label": "hello@zennyxstudio.com",
+      "href": "mailto:hello@zennyxstudio.com",
+      "isActive": true,
+      "isPrimary": true,
+      "order": 1
+    },
+    {
+      "name": "Instagram",
+      "type": "social",
+      "label": "Instagram",
+      "href": "",
+      "isActive": false,
+      "isPrimary": false,
+      "order": 2
+    },
+    {
+      "name": "X / Twitter",
+      "type": "social",
+      "label": "X / Twitter",
+      "href": "",
+      "isActive": false,
+      "isPrimary": false,
+      "order": 3
+    },
+    {
+      "name": "itch.io",
+      "type": "platform",
+      "label": "itch.io",
+      "href": "",
+      "isActive": false,
+      "isPrimary": false,
+      "order": 4
+    },
+    {
+      "name": "YouTube",
+      "type": "platform",
+      "label": "YouTube",
+      "href": "",
+      "isActive": false,
+      "isPrimary": false,
+      "order": 5
+    },
+    {
+      "name": "GitHub",
+      "type": "platform",
+      "label": "GitHub",
+      "href": "",
+      "isActive": false,
+      "isPrimary": false,
+      "order": 6
+    }
+  ],
+  "cta": {
+    "title": "Follow the progress",
+    "description": "Read our devlogs and follow the development of our first game.",
+    "primaryButton": {
+      "label": "Read Devlog",
+      "href": "/devlog"
+    },
+    "secondaryButton": {
+      "label": "Contact Us",
+      "href": "/contact"
+    }
+  }
+}

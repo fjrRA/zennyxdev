@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Fajar",
+    "slug": "fajar",
+    "role": "Founder",
+    "displayRole": "Founder / Web & Game Development",
+    "location": "Indonesia",
+    "avatar": "/images/team/fajar-placeholder.png",
+    "shortBio": "Founder Zennyx Interactive Studio yang berfokus pada arah website, struktur teknis, dokumentasi devlog, dan pengembangan fondasi awal studio.",
+    "bio": "Fajar adalah founder Zennyx Interactive Studio. Pada tahap awal studio, Fajar berperan dalam membangun fondasi teknis website, menyusun arah dokumentasi devlog, mengelola konten, dan ikut mengembangkan arah game pertama Zennyx. Fokus utamanya adalah menjaga agar Zennyx bergerak secara realistis: mulai dari karya kecil, playable, terdokumentasi, dan bisa diselesaikan.",
+    "responsibilities": [
+      "Studio planning",
+      "Website development",
+      "Content structure",
+      "Devlog writing",
+      "Game development planning",
+      "Technical documentation"
+    ],
+    "socials": {
+      "website": "",
+      "github": "",
+      "linkedin": "",
+      "instagram": "",
+      "x": ""
+    },
+    "isFounder": true,
+    "isActive": true,
+    "order": 1
+  },
+  {
+    "name": "Faiz",
+    "slug": "faiz",
+    "role": "Co-Founder",
+    "displayRole": "Co-Founder / Creative Direction",
+    "location": "Indonesia",
+    "avatar": "/images/team/faiz-placeholder.png",
+    "shortBio": "Co-founder Zennyx Interactive Studio yang membantu arah kreatif, ide game, konsep dunia, dan perkembangan identitas awal studio.",
+    "bio": "Faiz adalah co-founder Zennyx Interactive Studio. Pada tahap awal studio, Faiz berperan dalam memberi masukan arah kreatif, konsep game, ide dunia, karakter, dan pengembangan identitas awal Zennyx. Bersama Fajar, Faiz membantu menjaga agar proyek Zennyx tetap punya karakter kreatif, tetapi tetap realistis untuk dikerjakan oleh tim kecil.",
+    "responsibilities": [
+      "Creative direction",
+      "Game concept discussion",
+      "Worldbuilding input",
+      "Character and story ideas",
+      "Studio identity feedback",
+      "Project direction review"
+    ],
+    "socials": {
+      "website": "",
+      "github": "",
+      "linkedin": "",
+      "instagram": "",
+      "x": ""
+    },
+    "isFounder": true,
+    "isActive": true,
+    "order": 2
+  }
+]
