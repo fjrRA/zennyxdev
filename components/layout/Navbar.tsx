@@ -1,4 +1,6 @@
 // components/layout/Navbar.tsx
+import Image from "next/image";
+import logoIcon from "@/app/icon.png";
 import Link from "next/link";
 import { getSiteConfig } from "@/lib/site";
 import { Button } from "@/components/ui/Button";
@@ -35,8 +37,15 @@ export function Navbar() {
       <Container>
         <nav className="flex min-h-16 items-center justify-between gap-6">
           <Link href="/" className="group flex items-center gap-3">
-            <span className="flex size-9 items-center justify-center rounded-full border border-[var(--surface-border)] bg-[var(--surface)] font-display text-sm font-semibold text-[var(--foreground)] transition-colors group-hover:border-[var(--accent)]">
-              Z
+            <span className="flex size-10 items-center justify-center overflow-hidden rounded-full border border-[var(--surface-border)] bg-white transition-colors group-hover:border-[var(--accent)]">
+              <Image
+                src={logoIcon}
+                alt="Zennyx Interactive Studio logo"
+                width={40}
+                height={40}
+                className="h-full w-full object-cover"
+                priority
+              />
             </span>
 
             <div className="leading-none">
