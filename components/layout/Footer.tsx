@@ -1,4 +1,6 @@
 // components/layout/Footer.tsx
+import Image from "next/image";
+import logoIcon from "@/app/icon.png";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { getSiteConfig } from "@/lib/site";
@@ -33,8 +35,15 @@ export function Footer() {
         <div className="grid gap-10 py-10 md:grid-cols-[1.5fr_1fr_1fr]">
           <div>
             <Link href="/" className="inline-flex items-center gap-3">
-              <span className="flex size-10 items-center justify-center rounded-full border border-[var(--surface-border)] bg-[var(--surface)] font-display text-sm font-semibold">
-                Z
+              <span className="flex size-10 items-center justify-center overflow-hidden rounded-full border border-[var(--surface-border)] bg-white transition-colors group-hover:border-[var(--accent)]">
+                <Image
+                  src={logoIcon}
+                  alt="Zennyx Interactive Studio logo"
+                  width={40}
+                  height={40}
+                  className="h-full w-full object-cover"
+                  priority
+                />
               </span>
 
               <div>
