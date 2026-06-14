@@ -5,11 +5,40 @@ Struktur folder zennyx-website
 |-📁 __notes
 |-📁 .next
 |-📁 app
+  |-📁 about
+    |-📄 page.tsx
+  |-📁 contact
+    |-📄 page.tsx
+  |-📁 devlog
+    |-📁 [slug]
+      |-📄 page.tsx
+    |-📄 page.tsx
   |-📁 games
     |-📁 [slug]
       |-📄 page.tsx
     |-📄 page.tsx
+  |-📄 globals.css
+  |-📄 icon.png
+  |-📄 layout.tsx
+  |-📄 not-found.tsx
+  |-📄 page.tsx
+  |-📄 robots.ts
+  |-📄 sitemap.ts
 |-📁 components
+  |-📁 about
+    |-📄 AboutHeroSection.tsx
+    |-📄 AboutPrinciplesSection.tsx
+    |-📄 AboutStudioSection.tsx
+    |-📄 AboutTeamSection.tsx
+  |-📁 contact
+    |-📄 ContactHeroSection.tsx
+    |-📄 ContactLinksSection.tsx
+    |-📄 ContactNoteSection.tsx
+  |-📁 devlog
+    |-📄 DevlogContentSection.tsx
+    |-📄 DevlogDetailHeroSection.tsx
+    |-📄 DevlogHeroSection.tsx
+    |-📄 DevlogListSection.tsx
   |-📁 games
     |-📄 ActiveProductionSection.tsx
     |-📄 GameCoreSection.tsx
