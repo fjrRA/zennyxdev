@@ -5,9 +5,35 @@ Struktur folder zennyx-website
 |-📁 __notes
 |-📁 .next
 |-📁 app
+  |-📁 games
+    |-📁 [slug]
+      |-📄 page.tsx
+    |-📄 page.tsx
 |-📁 components
+  |-📁 games
+    |-📄 ActiveProductionSection.tsx
+    |-📄 GameCoreSection.tsx
+    |-📄 GameDetailHeroSection.tsx
+    |-📄 GameScopeSection.tsx
+    |-📄 GamesHeroSection.tsx
+    |-📄 ProjectPolicySection.tsx
+    |-📄 RelatedDevlogsSection.tsx
+  |-📁 home
+    |-📄 AboutManifestoSection.tsx
+    |-📄 ContactSection.tsx
+    |-📄 CurrentGameSection.tsx
+    |-📄 HeroSection.tsx
+    |-📄 InfoRow.tsx
+    |-📄 LatestDevlogsSection.tsx
+    |-📄 TeamSection.tsx
   |-📁 layout
+    |-📄 Footer.tsx
+    |-📄 Navbar.tsx
   |-📁 ui
+    |-📄 Button.tsx
+    |-📄 Container.tsx
+    |-📄 SectionHeader.tsx
+    |-📄 StatusBadge.tsx
 |-📁 content
   |-📁 devlogs
     |-📄 kenapa-kami-memulai-zennyx.md
