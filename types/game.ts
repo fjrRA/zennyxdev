@@ -1,4 +1,4 @@
-// type/game.ts
+// types/game.ts
 import type { OrderedItem, SeoBase } from "./common";
 
 export type GameSetting = {
