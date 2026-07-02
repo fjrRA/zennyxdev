@@ -1,51 +1,117 @@
 @import "tailwindcss";
 
 :root {
-  /* Void Black - Lebih 'Zen' daripada hitam pekat #000000 */
-  --background: #121212;
-  --foreground: #f4f4f5;
+  /*
+   * Zennyx Editorial Palette
+   * Warna utama yang akan dipakai oleh design system baru.
+   */
 
-  --surface: #1a1a1c;
-  --surface-soft: #222225;
-  --surface-border: #2a2a2c;
+  --paper: #f1ece2;
+  --paper-soft: #faf8f2;
+  --ink: #151515;
+  --asphalt: #262623;
+  --oxide: #a9472e;
+  --olive: #6f7163;
+  --concrete: #b8b1a6;
+  --ash: #77736c;
 
-  /* Ash Grey - Untuk teks sekunder dan menu default */
-  --muted: #8b8b8d;
-  --muted-soft: #4E4E50;
+  /*
+   * Semantic tokens
+   * Gunakan token ini pada komponen baru.
+   */
 
-  /* Neon Orange - Energi aksi & Creative Rebellion */
-  --accent: #FF4500;
-  --accent-soft: rgba(255, 69, 0, 0.14);
+  --background: var(--paper);
+  --foreground: var(--ink);
 
-  /* Digital Cyan - Aksen cyber/glitch masa depan (< 1%) */
-  --cyan: #00FFCC;
+  --surface: var(--paper-soft);
+  --surface-soft: #e8e2d7;
+  --surface-dark: var(--asphalt);
+  --surface-border: var(--concrete);
 
-  --danger: #ef4444;
-  --success: #22c55e;
+  --muted: var(--ash);
+  --muted-soft: #938d83;
 
-  --max-width: 1120px;
+  --accent: var(--oxide);
+  --accent-hover: #873824;
+  --accent-soft: rgba(169, 71, 46, 0.12);
+
+  --success: #53634b;
+  --danger: #9d342b;
+
+  /*
+   * Alias sementara.
+   * Variabel lama dipertahankan agar komponen lama tidak langsung error.
+   * Penggunaannya akan dihapus secara bertahap.
+   */
+
+  --cyan: var(--olive);
+
+  /*
+   * Layout tokens
+   */
+
+  --max-width: 1360px;
+  --reading-width: 720px;
+
+  --page-padding-mobile: 1.25rem;
+  --page-padding-tablet: 1.75rem;
+  --page-padding-desktop: 3rem;
+
+  /*
+   * Border dan motion
+   */
+
+  --border-width: 1px;
+  --radius-small: 0.25rem;
+  --transition-fast: 180ms ease;
+  --transition-medium: 280ms ease;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  background: var(--background);
 }
 
 body {
   min-height: 100vh;
   margin: 0;
-  background:
-    radial-gradient(circle at top left, rgba(249, 115, 22, 0.08), transparent 32rem),
-    radial-gradient(circle at top right, rgba(255, 255, 255, 0.04), transparent 28rem),
-    var(--background);
+  overflow-x: hidden;
+
+  background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+
+  font-family:
+    var(--font-sans),
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 1rem;
+  line-height: 1.6;
+
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  min-height: 70vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
 }
 
 h1,
@@ -54,8 +120,19 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-display), var(--font-body), Arial, Helvetica, sans-serif;
-  letter-spacing: -0.04em;
+  font-family:
+    var(--font-sans),
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-weight: 600;
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 a {
@@ -67,45 +144,52 @@ button,
 input,
 textarea,
 select {
+  color: inherit;
   font: inherit;
+}
+
+button {
+  cursor: pointer;
 }
 
 img,
 picture,
 svg,
-video {
+video,
+canvas {
   display: block;
   max-width: 100%;
 }
 
 ::selection {
   background: var(--accent);
-  color: #0a0a0a;
+  color: var(--paper-soft);
 }
 
-.noise-bg {
-  position: relative;
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 
-.noise-bg::before {
-  pointer-events: none;
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  opacity: 0.035;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
+/*
+ * Typography helpers
+ */
 
-.font-display {
-  font-family: var(--font-display), var(--font-body), Arial, Helvetica, sans-serif;
-}
-
+.font-display,
 .font-body {
-  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+  font-family:
+    var(--font-sans),
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+.font-serif {
+  font-family:
+    var(--font-serif),
+    Georgia,
+    "Times New Roman",
+    serif;
 }
 
 .font-mono-accent {
@@ -115,4 +199,48 @@ video {
     "Liberation Mono",
     Menlo,
     monospace;
+}
+
+/*
+ * Shared editorial helpers
+ */
+
+.editorial-label {
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    Menlo,
+    monospace;
+
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.editorial-divider {
+  width: 100%;
+  height: var(--border-width);
+  border: 0;
+  background: var(--surface-border);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.reading-width {
+  max-width: var(--reading-width);
+}
+
+.site-header {
+  background-color: var(--paper) !important;
+  color: var(--ink);
+}
+
+.site-mobile-navigation {
+  background-color: var(--paper) !important;
+  color: var(--ink);
 }

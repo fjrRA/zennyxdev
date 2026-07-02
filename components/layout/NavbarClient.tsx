@@ -1,19 +1,15 @@
 // components/layout/NavbarClient.tsx
+
 "use client";
 
+import logoIcon from "@/app/icon.png";
+import { Container } from "@/components/ui/Container";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import logoIcon from "@/app/icon.png";
-import { Button } from "@/components/ui/Button";
-import { Container } from "@/components/ui/Container";
 
 const navLinks = [
-  {
-    label: "Home",
-    href: "/",
-  },
   {
     label: "Games",
     href: "/games",
@@ -23,7 +19,7 @@ const navLinks = [
     href: "/devlog",
   },
   {
-    label: "About",
+    label: "Studio",
     href: "/about",
   },
   {
@@ -37,11 +33,11 @@ type NavbarClientProps = {
 };
 
 export function NavbarClient({ shortName }: NavbarClientProps) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   function toggleMenu() {
-    setIsMenuOpen((current) => !current);
+    setIsMenuOpen((currentState) => !currentState);
   }
 
   function closeMenu() {
@@ -49,45 +45,97 @@ export function NavbarClient({ shortName }: NavbarClientProps) {
   }
 
   function isActiveLink(href: string) {
-    if (href === "/") {
-      return pathname === "/";
-    }
-
-    return pathname.startsWith(href);
+    return pathname === href || pathname.startsWith(`${href}/`);
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--surface-border)] bg-[rgba(5,5,5,0.78)] backdrop-blur-xl">
+    <header
+      className="
+    site-header
+    sticky
+    top-0
+    z-[999]
+    isolate
+    border-b
+    border-[var(--surface-border)]
+  "
+    >
       <Container>
-        <nav className="flex min-h-16 items-center justify-between gap-6">
+        <div
+          className="
+            flex
+            min-h-20
+            items-center
+            justify-between
+            gap-6
+          "
+        >
           <Link
             href="/"
             onClick={closeMenu}
-            className="group flex items-center gap-3"
+            className="
+              inline-flex
+              min-w-0
+              items-center
+              gap-3
+              focus-visible:outline-offset-4
+            "
+            aria-label={`${shortName} homepage`}
           >
-            <span className="flex size-10 items-center justify-center overflow-hidden rounded-full border border-[var(--surface-border)] bg-white transition-colors group-hover:border-[var(--accent)]">
-              <Image
-                src={logoIcon}
-                alt="Zennyx Interactive Studio logo"
-                width={40}
-                height={40}
-                className="h-full w-full object-cover"
-                priority
-              />
-            </span>
+            <Image
+              src={logoIcon}
+              alt=""
+              width={40}
+              height={40}
+              priority
+              className="
+                size-10
+                shrink-0
+                object-contain
+              "
+            />
 
-            <div className="leading-none">
-              <p className="font-display text-sm font-semibold tracking-[-0.03em]">
+            <span className="min-w-0">
+              <span
+                className="
+                  block
+                  text-sm
+                  font-semibold
+                  uppercase
+                  leading-none
+                  tracking-[-0.02em]
+                "
+              >
                 {shortName}
-              </p>
+              </span>
 
-              <p className="mt-1 hidden font-mono-accent text-[0.62rem] uppercase tracking-[0.16em] text-[var(--muted-soft)] sm:block">
+              <span
+                className="
+                  mt-1
+                  block
+                  truncate
+                  text-[0.625rem]
+                  font-medium
+                  uppercase
+                  leading-none
+                  tracking-[0.16em]
+                  text-[var(--ash)]
+                "
+              >
                 Interactive Studio
-              </p>
-            </div>
+              </span>
+            </span>
           </Link>
 
-          <div className="hidden items-center gap-6 md:flex">
+          <nav
+            aria-label="Primary navigation"
+            className="
+              hidden
+              min-h-20
+              items-stretch
+              md:flex
+            "
+          >
             {navLinks.map((link) => {
               const isActive = isActiveLink(link.href);
 
@@ -95,85 +143,143 @@ export function NavbarClient({ shortName }: NavbarClientProps) {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium transition-colors hover:text-[var(--foreground)] ${isActive
-                    ? "text-[var(--foreground)]"
-                    : "text-[var(--muted)]"
-                    }`}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`
+                    inline-flex
+                    min-h-20
+                    items-center
+                    border-b-2
+                    px-4
+                    text-xs
+                    font-semibold
+                    uppercase
+                    tracking-[0.1em]
+                    transition-colors
+                    duration-200
+                    ${isActive
+                      ? `
+                          border-[var(--accent)]
+                          text-[var(--foreground)]
+                        `
+                      : `
+                          border-transparent
+                          text-[var(--ash)]
+                          hover:text-[var(--foreground)]
+                        `
+                    }
+                  `}
                 >
                   {link.label}
                 </Link>
               );
             })}
-          </div>
-
-          <div className="hidden md:block">
-            <Button href="/devlog" variant="secondary" className="px-4 py-2">
-              Read Devlog
-            </Button>
-          </div>
+          </nav>
 
           <button
             type="button"
             onClick={toggleMenu}
-            aria-label="Toggle navigation menu"
             aria-expanded={isMenuOpen}
             aria-controls="mobile-navigation"
-            className="inline-flex size-11 items-center justify-center rounded-full border border-[var(--surface-border)] bg-[var(--surface)] text-[var(--foreground)] transition-colors hover:border-[var(--accent)] md:hidden"
+            className="
+              inline-flex
+              min-h-11
+              items-center
+              justify-center
+              border-l
+              border-[var(--surface-border)]
+              bg-transparent
+              pl-5
+              text-[0.6875rem]
+              font-semibold
+              uppercase
+              tracking-[0.14em]
+              transition-colors
+              duration-200
+              hover:text-[var(--accent)]
+              md:hidden
+            "
           >
-            <span className="relative flex h-4 w-5 flex-col justify-between">
-              <span
-                className={`block h-[2px] w-full bg-current transition-transform ${isMenuOpen ? "translate-y-[7px] rotate-45" : ""
-                  }`}
-              />
-
-              <span
-                className={`block h-[2px] w-full bg-current transition-opacity ${isMenuOpen ? "opacity-0" : "opacity-100"
-                  }`}
-              />
-
-              <span
-                className={`block h-[2px] w-full bg-current transition-transform ${isMenuOpen ? "-translate-y-[7px] -rotate-45" : ""
-                  }`}
-              />
-            </span>
+            {isMenuOpen ? "Close" : "Menu"}
           </button>
-        </nav>
-
-        <div
-          id="mobile-navigation"
-          className={`overflow-hidden border-t border-[var(--surface-border)] transition-[max-height,opacity] duration-300 md:hidden ${isMenuOpen ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0"
-            }`}
-        >
-          <div className="space-y-2 py-4">
-            {navLinks.map((link) => {
-              const isActive = isActiveLink(link.href);
-
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={closeMenu}
-                  className={`flex items-center justify-between border border-[var(--surface-border)] bg-[var(--surface)] px-4 py-3 font-mono-accent text-xs uppercase tracking-[0.16em] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] ${isActive
-                    ? "border-[var(--accent)] text-[var(--accent)]"
-                    : "text-[var(--muted)]"
-                    }`}
-                >
-                  <span>{link.label}</span>
-                  <span className="text-[var(--muted-soft)]">-&gt;</span>
-                </Link>
-              );
-            })}
-
-            <Link
-              href="/devlog"
-              onClick={closeMenu}
-              className="mt-3 flex items-center justify-center border border-[var(--accent)] bg-[var(--accent)] px-4 py-3 font-mono-accent text-xs font-bold uppercase tracking-[0.16em] text-[#050505] transition-colors hover:bg-transparent hover:text-[var(--accent)]"
-            >
-              Read Devlog
-            </Link>
-          </div>
         </div>
       </Container>
+      {isMenuOpen && (
+        <div
+          id="mobile-navigation"
+          className="
+      site-mobile-navigation
+      absolute
+      left-0
+      top-full
+      z-[110]
+      w-full
+      max-h-[calc(100dvh-5rem)]
+      overflow-y-auto
+      border-t
+      border-[var(--surface-border)]
+      md:hidden
+    "
+        >
+          <Container>
+            <nav
+              aria-label="Mobile navigation"
+              className="py-3"
+            >
+              {navLinks.map((link, index) => {
+                const isActive = isActiveLink(link.href);
+                const itemNumber = String(index + 1).padStart(2, "0");
+
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={closeMenu}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`
+                grid
+                min-h-20
+                grid-cols-[3rem_1fr_auto]
+                items-center
+                gap-3
+                border-b
+                border-[var(--surface-border)]
+                text-sm
+                font-semibold
+                uppercase
+                tracking-[0.08em]
+                transition-colors
+                duration-200
+                ${isActive
+                        ? "text-[var(--accent)]"
+                        : `
+                      text-[var(--foreground)]
+                      hover:text-[var(--accent)]
+                    `
+                      }
+              `}
+                  >
+                    <span
+                      className="
+                  font-mono-accent
+                  text-[0.6875rem]
+                  font-normal
+                  tracking-[0.08em]
+                  text-[var(--ash)]
+                "
+                    >
+                      {itemNumber}
+                    </span>
+
+                    <span>{link.label}</span>
+
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                );
+              })}
+            </nav>
+          </Container>
+        </div>
+      )}
     </header>
   );
 }
