@@ -39,13 +39,12 @@
     "targetBuild": "Prototype",
     "targetRelease": "To be announced",
     "developmentStage": {
+      "notes": "Saat ini fokus proyek adalah menyusun fondasi gameplay, scope prototype, dan arah visual/gameplay sebelum masuk ke vertical slice atau demo publik.",
       "current": "Early prototype planning",
-      "nextMilestone": "Playable prototype",
-      "notes": "Saat ini fokus proyek adalah menyusun fondasi gameplay, scope prototype, dan arah visual/gameplay sebelum masuk ke vertical slice atau demo publik."
+      "nextMilestone": "Playable prototype"
     },
     "gameplayFocus": {
       "title": "Gameplay Focus",
-      "description": "Fokus gameplay awal adalah membuat aksi beat 'em up yang sederhana, responsif, dan bisa dikembangkan bertahap.",
       "points": [
         "Pergerakan karakter yang nyaman",
         "Basic attack",
@@ -54,7 +53,8 @@
         "Health system",
         "Stage clear sederhana",
         "UI dasar untuk combat"
-      ]
+      ],
+      "description": "Fokus gameplay awal adalah membuat aksi beat 'em up yang sederhana, responsif, dan bisa dikembangkan bertahap."
     },
     "prototypeScope": [
       "Player movement",
@@ -78,17 +78,17 @@
       "Sistem ekonomi kompleks"
     ],
     "media": {
-      "coverImage": "/images/games/andara-beat-em-up/cover-placeholder.png",
-      "thumbnail": "/images/games/andara-beat-em-up/thumb-placeholder.png",
+      "gallery": [],
       "heroImage": "/images/games/andara-beat-em-up/hero-placeholder.png",
-      "gallery": []
+      "thumbnail": "/images/games/andara-beat-em-up/thumb-placeholder.png",
+      "coverImage": "/images/games/andara-beat-em-up/cover-placeholder.png"
     },
     "links": {
-      "devlog": "/devlog",
+      "demo": "",
       "itch": "",
       "steam": "",
-      "trailer": "",
-      "demo": ""
+      "devlog": "/devlog",
+      "trailer": ""
     },
     "relatedDevlogs": [
       "kenapa-kami-memulai-zennyx",
@@ -97,8 +97,8 @@
     ],
     "seo": {
       "title": "Untitled Andara Beat 'em Up",
-      "description": "Game pertama Zennyx Interactive Studio: side-scrolling action beat 'em up berlatar Kota Andara, kota fiksi urban yang keras dan penuh konflik.",
-      "ogImage": "/og/andara-beat-em-up-og.png"
+      "ogImage": "/og/andara-beat-em-up-og.png",
+      "description": "Game pertama Zennyx Interactive Studio: side-scrolling action beat 'em up berlatar Kota Andara, kota fiksi urban yang keras dan penuh konflik."
     }
   }
 ]

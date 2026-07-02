@@ -1,15 +1,15 @@
 ---
-
-title: "Scope Dulu: Prototype Sebelum Mimpi Besar"
-slug: "scope-dulu-sebelum-mimpi-besar"
-date: "2026-06-13"
-category: "Production"
-summary: "Catatan tentang kenapa Zennyx memilih mengendalikan scope terlebih dahulu sebelum mengejar fitur besar, lore panjang, atau proyek yang terlalu ambisius."
-relatedGame: "andara-beat-em-up"
+title: 'Scope Dulu: Prototype Sebelum Mimpi Besar'
+slug: scope-dulu-sebelum-mimpi-besar
+date: '2026-06-13'
+category: Production
+summary: >-
+  Catatan tentang kenapa Zennyx memilih mengendalikan scope terlebih dahulu
+  sebelum mengejar fitur besar, lore panjang, atau proyek yang terlalu ambisius.
+relatedGame: andara-beat-em-up
 isFeatured: false
 isPublished: true
------------------
-
+---
 Salah satu keputusan penting di tahap awal Zennyx adalah mengendalikan scope.
 
 Kami punya banyak ide besar. Dunia fiksi, konflik karakter, setting urban, proyek jangka panjang, dan kemungkinan game yang lebih ambisius di masa depan. Namun untuk sekarang, kami memilih untuk tidak langsung mengejar semuanya.

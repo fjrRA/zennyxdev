@@ -1,82 +1,82 @@
 {
   "primaryContact": {
+    "href": "mailto:hello@zennyxstudio.com",
     "type": "email",
     "label": "Email",
     "value": "hello@zennyxstudio.com",
-    "href": "mailto:hello@zennyxstudio.com",
     "description": "For general inquiries, collaboration, and studio-related contact."
   },
   "contactMessage": {
+    "note": "Kami masih berada di tahap awal, tetapi kami sedang membangun. Untuk pertanyaan umum, kolaborasi, atau follow progress Zennyx, kamu bisa menghubungi kami melalui email atau social links resmi.",
     "title": "Contact & Follow",
-    "description": "Zennyx Interactive Studio is still in its early stage. Follow our progress, read our devlogs, or reach out for collaboration and general inquiries.",
-    "note": "Kami masih berada di tahap awal, tetapi kami sedang membangun. Untuk pertanyaan umum, kolaborasi, atau follow progress Zennyx, kamu bisa menghubungi kami melalui email atau social links resmi."
+    "description": "Zennyx Interactive Studio is still in its early stage. Follow our progress, read our devlogs, or reach out for collaboration and general inquiries."
   },
   "links": [
     {
+      "href": "mailto:hello@zennyxstudio.com",
       "name": "Email",
       "type": "email",
       "label": "hello@zennyxstudio.com",
-      "href": "mailto:hello@zennyxstudio.com",
+      "order": 1,
       "isActive": true,
-      "isPrimary": true,
-      "order": 1
+      "isPrimary": true
     },
     {
+      "href": "",
       "name": "Instagram",
       "type": "social",
       "label": "Instagram",
-      "href": "",
+      "order": 2,
       "isActive": false,
-      "isPrimary": false,
-      "order": 2
+      "isPrimary": false
     },
     {
+      "href": "",
       "name": "X / Twitter",
       "type": "social",
       "label": "X / Twitter",
-      "href": "",
+      "order": 3,
       "isActive": false,
-      "isPrimary": false,
-      "order": 3
+      "isPrimary": false
     },
     {
+      "href": "",
       "name": "itch.io",
       "type": "platform",
       "label": "itch.io",
-      "href": "",
+      "order": 4,
       "isActive": false,
-      "isPrimary": false,
-      "order": 4
+      "isPrimary": false
     },
     {
+      "href": "",
       "name": "YouTube",
       "type": "platform",
       "label": "YouTube",
-      "href": "",
+      "order": 5,
       "isActive": false,
-      "isPrimary": false,
-      "order": 5
+      "isPrimary": false
     },
     {
+      "href": "",
       "name": "GitHub",
       "type": "platform",
       "label": "GitHub",
-      "href": "",
+      "order": 6,
       "isActive": false,
-      "isPrimary": false,
-      "order": 6
+      "isPrimary": false
     }
   ],
   "cta": {
     "title": "Follow the progress",
     "description": "Read our devlogs and follow the development of our first game.",
     "primaryButton": {
-      "label": "Read Devlog",
-      "href": "/devlog"
+      "href": "/devlog",
+      "label": "Read Devlog"
     },
     "secondaryButton": {
-      "label": "Contact Us",
-      "href": "/contact"
+      "href": "/contact",
+      "label": "Contact Us"
     }
   }
 }

@@ -1,15 +1,16 @@
 ---
-
-title: "Kenapa Kami Memulai Zennyx Interactive Studio"
-slug: "kenapa-kami-memulai-zennyx"
-date: "2026-06-13"
-category: "Studio"
-summary: "Catatan awal tentang kenapa Zennyx Interactive Studio dibangun, apa arah awalnya, dan kenapa kami memilih memulai dari karya kecil yang bisa diselesaikan."
-relatedGame: ""
+title: Kenapa Kami Memulai Zennyx Interactive Studio
+slug: kenapa-kami-memulai-zennyx
+date: '2026-06-13'
+category: Studio
+summary: >-
+  Catatan awal tentang kenapa Zennyx Interactive Studio dibangun, apa arah
+  awalnya, dan kenapa kami memilih memulai dari karya kecil yang bisa
+  diselesaikan.
+relatedGame: ''
 isFeatured: true
 isPublished: true
------------------
-
+---
 Zennyx Interactive Studio dimulai dari keinginan sederhana: membuat game yang benar-benar bisa dimainkan, diselesaikan, dan menjadi fondasi untuk langkah yang lebih besar.
 
 Kami sadar bahwa membangun studio game bukan sesuatu yang bisa langsung terlihat besar sejak awal. Karena itu, Zennyx tidak ingin memulai dengan terlalu banyak janji, terlalu banyak proyek, atau rencana yang terlalu luas sebelum ada karya nyata yang selesai.

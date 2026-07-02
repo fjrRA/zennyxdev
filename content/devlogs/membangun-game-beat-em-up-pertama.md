@@ -1,15 +1,16 @@
 ---
-
-title: "Membangun Game Beat 'em Up Pertama Kami"
-slug: "membangun-game-beat-em-up-pertama"
-date: "2026-06-13"
-category: "Development"
-summary: "Catatan awal tentang game pertama Zennyx: sebuah side-scrolling action beat 'em up berlatar Kota Andara, dengan fokus awal pada prototype kecil yang playable."
-relatedGame: "andara-beat-em-up"
+title: Membangun Game Beat 'em Up Pertama Kami
+slug: membangun-game-beat-em-up-pertama
+date: '2026-06-13'
+category: Development
+summary: >-
+  Catatan awal tentang game pertama Zennyx: sebuah side-scrolling action beat
+  'em up berlatar Kota Andara, dengan fokus awal pada prototype kecil yang
+  playable.
+relatedGame: andara-beat-em-up
 isFeatured: true
 isPublished: true
------------------
-
+---
 Game pertama Zennyx Interactive Studio saat ini masih menggunakan judul sementara: Untitled Andara Beat 'em Up.
 
 Secara konsep, game ini adalah side-scrolling action beat 'em up berlatar Kota Andara, sebuah kota fiksi bernuansa urban yang terinspirasi dari kehidupan jalanan, konflik manusia, gang sempit, kota malam, dan tekanan sosial di lingkungan perkotaan.

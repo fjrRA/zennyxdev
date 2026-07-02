@@ -7,18 +7,18 @@
   "language": "id",
   "siteUrl": "https://zennyx-website.vercel.app",
   "tagline": {
+    "short": "Small playable worlds before bigger dreams.",
     "primary": "Building small playable worlds before chasing bigger dreams.",
-    "secondary": "Membangun karya kecil yang playable sebelum mengejar dunia yang lebih besar.",
-    "short": "Small playable worlds before bigger dreams."
+    "secondary": "Membangun karya kecil yang playable sebelum mengejar dunia yang lebih besar."
   },
   "positioning": {
     "en": "An early-stage indie game studio building playable worlds, one small release at a time.",
     "id": "Studio game indie tahap awal yang membangun dunia playable, dimulai dari karya kecil yang bisa diselesaikan."
   },
   "description": {
+    "long": "Zennyx Interactive Studio adalah studio game independen tahap awal dari Indonesia yang dibangun oleh Fajar dan Faiz. Studio ini berfokus pada pengembangan game kecil hingga menengah dengan pendekatan eksperimental, action-driven gameplay, dunia fiksi yang kuat, dan konflik manusia sebagai benang merah kreatifnya. Zennyx tidak ingin langsung terlihat seperti studio besar sejak awal. Fokus utama Zennyx adalah menyelesaikan karya nyata, membangun portofolio, mendokumentasikan proses development, dan perlahan menyiapkan fondasi untuk proyek yang lebih ambisius di masa depan.",
     "short": "Zennyx Interactive Studio adalah studio game independen tahap awal dari Indonesia yang sedang membangun game kecil hingga menengah dengan fokus pada gameplay, eksperimen genre, dan progress nyata.",
-    "medium": "Zennyx Interactive Studio adalah studio game independen yang dibangun oleh Fajar dan Faiz. Untuk tahap awal, Zennyx berfokus membangun portofolio melalui game kecil hingga menengah yang playable, realistis untuk diselesaikan, dan terdokumentasi lewat devlog.",
-    "long": "Zennyx Interactive Studio adalah studio game independen tahap awal dari Indonesia yang dibangun oleh Fajar dan Faiz. Studio ini berfokus pada pengembangan game kecil hingga menengah dengan pendekatan eksperimental, action-driven gameplay, dunia fiksi yang kuat, dan konflik manusia sebagai benang merah kreatifnya. Zennyx tidak ingin langsung terlihat seperti studio besar sejak awal. Fokus utama Zennyx adalah menyelesaikan karya nyata, membangun portofolio, mendokumentasikan proses development, dan perlahan menyiapkan fondasi untuk proyek yang lebih ambisius di masa depan."
+    "medium": "Zennyx Interactive Studio adalah studio game independen yang dibangun oleh Fajar dan Faiz. Untuk tahap awal, Zennyx berfokus membangun portofolio melalui game kecil hingga menengah yang playable, realistis untuk diselesaikan, dan terdokumentasi lewat devlog."
   },
   "coreMessage": {
     "en": "Small playable worlds before bigger dreams.",
@@ -56,15 +56,15 @@
   "home": {
     "heroLabel": "Indie Game Studio from Indonesia",
     "heroTitle": "Zennyx Interactive Studio",
-    "heroDescription": "Kami adalah studio game indie tahap awal yang sedang membangun game pertama, mendokumentasikan prosesnya, dan memulai dari karya kecil yang bisa dimainkan.",
     "primaryCta": {
-      "label": "View Current Game",
-      "href": "/games"
+      "href": "/games",
+      "label": "View Current Game"
     },
     "secondaryCta": {
-      "label": "Read Devlog",
-      "href": "/devlog"
-    }
+      "href": "/devlog",
+      "label": "Read Devlog"
+    },
+    "heroDescription": "Kami adalah studio game indie tahap awal yang sedang membangun game pertama, mendokumentasikan prosesnya, dan memulai dari karya kecil yang bisa dimainkan."
   },
   "about": {
     "pageTitle": "About Zennyx",
@@ -75,9 +75,7 @@
     "copyright": "© 2026 Zennyx Interactive Studio. All rights reserved."
   },
   "seo": {
-    "defaultTitle": "Zennyx Interactive Studio",
-    "titleTemplate": "%s | Zennyx Interactive Studio",
-    "defaultDescription": "Zennyx Interactive Studio adalah studio game indie tahap awal dari Indonesia yang sedang membangun game kecil hingga menengah, devlog, dan portofolio game yang playable.",
+    "ogImage": "/og/default-og.png",
     "keywords": [
       "Zennyx Interactive Studio",
       "Zennyx",
@@ -88,6 +86,8 @@
       "beat em up game",
       "side scrolling action game"
     ],
-    "ogImage": "/og/default-og.png"
+    "defaultTitle": "Zennyx Interactive Studio",
+    "titleTemplate": "%s | Zennyx Interactive Studio",
+    "defaultDescription": "Zennyx Interactive Studio adalah studio game indie tahap awal dari Indonesia yang sedang membangun game kecil hingga menengah, devlog, dan portofolio game yang playable."
   }
 }
