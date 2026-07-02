@@ -1,8 +1,9 @@
 // components/layout/Footer.tsx
-import Image from "next/image";
-import logoIcon from "@/app/icon.png";
+
 import Link from "next/link";
+
 import { Container } from "@/components/ui/Container";
+
 import { getSiteConfig } from "@/lib/site";
 import { getActiveSocialLinks } from "@/lib/socials";
 
@@ -16,7 +17,7 @@ const footerLinks = [
     href: "/devlog",
   },
   {
-    label: "About",
+    label: "Studio",
     href: "/about",
   },
   {
@@ -30,87 +31,463 @@ export function Footer() {
   const socialLinks = getActiveSocialLinks();
 
   return (
-    <footer className="border-t border-[var(--surface-border)] bg-[rgba(5,5,5,0.55)]">
-      <Container>
-        <div className="grid gap-10 py-10 md:grid-cols-[1.5fr_1fr_1fr]">
-          <div>
-            <Link href="/" className="inline-flex items-center gap-3">
-              <span className="flex size-10 items-center justify-center overflow-hidden rounded-full border border-[var(--surface-border)] bg-white transition-colors group-hover:border-[var(--accent)]">
-                <Image
-                  src={logoIcon}
-                  alt="Zennyx Interactive Studio logo"
-                  width={40}
-                  height={40}
-                  className="h-full w-full object-cover"
-                  priority
-                />
-              </span>
+    <footer
+      className="
+        border-t
+        border-[var(--surface-border)]
+        bg-[var(--paper)]
+        text-[var(--ink)]
+      "
+    >
+      <Container className="pt-16 sm:pt-20 lg:pt-24">
+        <div
+          className="
+            grid
+            gap-8
+            border-b
+            border-[var(--surface-border)]
+            pb-10
+            md:grid-cols-12
+            md:items-end
+            lg:pb-12
+          "
+        >
+          <div className="md:col-span-5">
+            <p
+              className="
+                editorial-label
+                mb-3
+                text-[var(--accent)]
+              "
+            >
+              Independent game studio
+            </p>
 
-              <div>
-                <p className="font-display text-base font-semibold">
-                  {site.siteName}
-                </p>
-                <p className="mt-1 font-mono-accent text-[0.65rem] uppercase tracking-[0.18em] text-[var(--muted-soft)]">
-                  {site.type}
-                </p>
-              </div>
-            </Link>
-
-            <p className="mt-5 max-w-md text-sm leading-7 text-[var(--muted)]">
+            <p
+              className="
+                font-serif
+                mb-0
+                max-w-xl
+                text-lg
+                leading-relaxed
+                text-[var(--foreground)]
+                sm:text-xl
+              "
+            >
               {site.footer.text}
             </p>
           </div>
 
-          <div>
-            <h2 className="font-mono-accent text-xs uppercase tracking-[0.18em] text-[var(--accent)]">
-              Explore
-            </h2>
+          <div
+            className="
+              md:col-span-4
+              md:col-start-9
+              md:text-right
+            "
+          >
+            <p
+              className="
+                editorial-label
+                mb-3
+                text-[var(--ash)]
+              "
+            >
+              Studio direction
+            </p>
 
-            <ul className="mt-4 space-y-3">
-              {footerLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h2 className="font-mono-accent text-xs uppercase tracking-[0.18em] text-[var(--accent)]">
-              Follow / Contact
-            </h2>
-
-            {socialLinks.length > 0 ? (
-              <ul className="mt-4 space-y-3">
-                {socialLinks.map((link) => (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
-                      target={link.type === "email" ? undefined : "_blank"}
-                      rel={link.type === "email" ? undefined : "noreferrer"}
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
-                Social links will be added later.
-              </p>
-            )}
+            <p
+              className="
+                mb-0
+                text-sm
+                font-medium
+                leading-relaxed
+              "
+            >
+              {site.tagline.short}
+            </p>
           </div>
         </div>
 
-        <div className="border-t border-[var(--surface-border)] py-5">
-          <p className="text-xs text-[var(--muted-soft)]">
+        <Link
+          href="/"
+          aria-label={`${site.siteName} homepage`}
+          className="
+            group
+            block
+            border-b
+            border-[var(--surface-border)]
+            py-10
+            sm:py-14
+            lg:py-16
+          "
+        >
+          <span
+            className="
+              block
+              text-[clamp(4rem,15vw,13rem)]
+              font-semibold
+              uppercase
+              leading-[0.76]
+              tracking-[-0.075em]
+              transition-colors
+              duration-200
+              group-hover:text-[var(--accent)]
+            "
+          >
+            {site.shortName}
+          </span>
+
+          <span
+            className="
+              mt-7
+              flex
+              flex-col
+              gap-2
+              text-xs
+              font-semibold
+              uppercase
+              tracking-[0.12em]
+              text-[var(--ash)]
+              sm:flex-row
+              sm:items-center
+              sm:justify-between
+            "
+          >
+            <span>Interactive Studio</span>
+
+            <span>
+              {site.country} — {site.stage}
+            </span>
+          </span>
+        </Link>
+
+        <div
+          className="
+            grid
+            border-b
+            border-[var(--surface-border)]
+            md:grid-cols-12
+          "
+        >
+          <nav
+            aria-label="Footer navigation"
+            className="
+              py-10
+              md:col-span-5
+              md:pr-10
+              lg:py-12
+            "
+          >
+            <p
+              className="
+                editorial-label
+                mb-5
+                text-[var(--ash)]
+              "
+            >
+              Explore
+            </p>
+
+            <ul
+              className="
+                border-b
+                border-[var(--surface-border)]
+              "
+            >
+              {footerLinks.map((link, index) => {
+                const itemNumber = String(index + 1).padStart(2, "0");
+
+                return (
+                  <li
+                    key={link.href}
+                    className="
+                      border-t
+                      border-[var(--surface-border)]
+                    "
+                  >
+                    <Link
+                      href={link.href}
+                      className="
+                        group
+                        grid
+                        min-h-14
+                        grid-cols-[2.5rem_1fr_auto]
+                        items-center
+                        gap-3
+                        text-sm
+                        font-semibold
+                        uppercase
+                        tracking-[0.08em]
+                        transition-colors
+                        duration-200
+                        hover:text-[var(--accent)]
+                      "
+                    >
+                      <span
+                        className="
+                          font-mono-accent
+                          text-[0.6875rem]
+                          font-normal
+                          text-[var(--ash)]
+                        "
+                      >
+                        {itemNumber}
+                      </span>
+
+                      <span>{link.label}</span>
+
+                      <span
+                        aria-hidden="true"
+                        className="
+                          transition-transform
+                          duration-200
+                          group-hover:translate-x-1
+                        "
+                      >
+                        →
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          <div
+            className="
+              border-t
+              border-[var(--surface-border)]
+              py-10
+              md:col-span-4
+              md:border-l
+              md:border-t-0
+              md:px-10
+              lg:py-12
+            "
+          >
+            <p
+              className="
+                editorial-label
+                mb-5
+                text-[var(--ash)]
+              "
+            >
+              Follow &amp; contact
+            </p>
+
+            {socialLinks.length > 0 ? (
+              <ul
+                className="
+                  border-b
+                  border-[var(--surface-border)]
+                "
+              >
+                {socialLinks.map((link) => {
+                  const isExternal = link.href.startsWith("http");
+
+                  return (
+                    <li
+                      key={link.name}
+                      className="
+                        border-t
+                        border-[var(--surface-border)]
+                      "
+                    >
+                      <a
+                        href={link.href}
+                        target={isExternal ? "_blank" : undefined}
+                        rel={isExternal ? "noreferrer" : undefined}
+                        className="
+                          group
+                          flex
+                          min-h-14
+                          items-center
+                          justify-between
+                          gap-4
+                          text-sm
+                          font-semibold
+                          transition-colors
+                          duration-200
+                          hover:text-[var(--accent)]
+                        "
+                      >
+                        <span className="break-all">
+                          {link.label}
+                        </span>
+
+                        <span
+                          aria-hidden="true"
+                          className="
+                            shrink-0
+                            transition-transform
+                            duration-200
+                            group-hover:translate-x-1
+                          "
+                        >
+                          →
+                        </span>
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p
+                className="
+                  font-serif
+                  mb-0
+                  max-w-sm
+                  text-base
+                  leading-relaxed
+                  text-[var(--ash)]
+                "
+              >
+                Kanal resmi akan ditambahkan ketika sudah siap
+                digunakan secara konsisten.
+              </p>
+            )}
+          </div>
+
+          <div
+            className="
+              border-t
+              border-[var(--surface-border)]
+              py-10
+              md:col-span-3
+              md:border-l
+              md:border-t-0
+              md:pl-10
+              lg:py-12
+            "
+          >
+            <p
+              className="
+                editorial-label
+                mb-5
+                text-[var(--ash)]
+              "
+            >
+              Studio information
+            </p>
+
+            <dl>
+              <div
+                className="
+                  border-t
+                  border-[var(--surface-border)]
+                  py-4
+                "
+              >
+                <dt
+                  className="
+                    editorial-label
+                    text-[var(--ash)]
+                  "
+                >
+                  Type
+                </dt>
+
+                <dd
+                  className="
+                    mt-2
+                    text-sm
+                    font-medium
+                    leading-relaxed
+                  "
+                >
+                  {site.type}
+                </dd>
+              </div>
+
+              <div
+                className="
+                  border-t
+                  border-[var(--surface-border)]
+                  py-4
+                "
+              >
+                <dt
+                  className="
+                    editorial-label
+                    text-[var(--ash)]
+                  "
+                >
+                  Based in
+                </dt>
+
+                <dd
+                  className="
+                    mt-2
+                    text-sm
+                    font-medium
+                    leading-relaxed
+                  "
+                >
+                  {site.country}
+                </dd>
+              </div>
+
+              <div
+                className="
+                  border-y
+                  border-[var(--surface-border)]
+                  py-4
+                "
+              >
+                <dt
+                  className="
+                    editorial-label
+                    text-[var(--ash)]
+                  "
+                >
+                  Current stage
+                </dt>
+
+                <dd
+                  className="
+                    mt-2
+                    text-sm
+                    font-medium
+                    leading-relaxed
+                  "
+                >
+                  {site.stage}
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <div
+          className="
+            flex
+            flex-col
+            gap-5
+            py-6
+            text-xs
+            leading-relaxed
+            text-[var(--ash)]
+            sm:flex-row
+            sm:items-end
+            sm:justify-between
+          "
+        >
+          <p
+            className="
+              mb-0
+              whitespace-pre-line
+            "
+          >
             {site.footer.copyright}
+          </p>
+
+          <p
+            className="
+              mb-0
+              sm:text-right
+            "
+          >
+            Built in public from Indonesia.
           </p>
         </div>
       </Container>
