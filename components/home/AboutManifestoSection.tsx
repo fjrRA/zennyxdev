@@ -1,73 +1,35 @@
-// components/home/AboutManifestoSection.tsx
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import type { SiteConfig } from "@/types";
 
-type AboutManifestoSectionProps = {
-  site: SiteConfig;
-};
+type AboutManifestoSectionProps = { site: SiteConfig };
 
 export function AboutManifestoSection({ site }: AboutManifestoSectionProps) {
   return (
-    <section className="relative border-b border-[var(--surface-border)] bg-[#0a0a0b] py-24 overflow-hidden">
-      <div
-        className="absolute inset-0 z-0 opacity-20 pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
-          backgroundSize: "64px 64px",
-        }}
-      />
-
-      <Container className="relative z-10">
-        <div className="grid gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <div className="lg:sticky lg:top-32">
-            <div className="mb-6 inline-flex items-center gap-3 border border-[var(--surface-border)] bg-[var(--surface)] px-3 py-1.5 font-mono-accent text-[0.65rem] uppercase tracking-[0.2em] text-[var(--muted)]">
-              <span className="h-1.5 w-1.5 bg-[var(--cyan)] shadow-[0_0_8px_var(--cyan)] animate-pulse" />
-              Studio_Manifesto
-            </div>
-
-            <h2 className="font-display text-4xl sm:text-5xl font-bold uppercase leading-[1.05] tracking-tighter text-[var(--foreground)]">
-              Small playable worlds <br className="hidden lg:block" />
-              <span className="text-[var(--muted-soft)]">
-                before bigger dreams.
-              </span>
+    <section id="studio-approach" className="zine-cut bg-[var(--color-studio-green)] text-[var(--color-mist-light)]">
+      <Container className="py-28 sm:py-32 lg:py-40">
+        <div className="grid gap-14 lg:grid-cols-12">
+          <div className="lg:col-span-9">
+            <p className="studio-kicker mb-6 text-[var(--color-amber)]">A note to ourselves</p>
+            <h2 className="mb-0 max-w-[14ch] text-[clamp(3.3rem,7vw,7.8rem)] leading-[0.86] tracking-[-0.075em]">
+              We don&apos;t need to look big. We need to <span className="font-serif font-normal italic text-[var(--color-amber)]">finish.</span>
             </h2>
-
-            <div className="mt-8 border-l-2 border-[var(--accent)] pl-6">
-              <p className="font-body text-base leading-relaxed text-[var(--muted)]">
-                {site.description.medium}
-              </p>
-            </div>
-
-            <div className="mt-12 hidden md:block font-mono-accent text-[10px] text-[var(--surface-border)] leading-tight select-none">
-              {`+-----------------------+`} <br />
-              {`|  Z E N N Y X          |`} <br />
-              {`|  S T U D I O          |`} <br />
-              {`|  V 0 . 1 // A C T I V E `} <br />
-              {`+-----------------------+`}
-            </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="lg:col-span-3 lg:self-end">
+            <p className="mb-7 font-serif text-lg leading-relaxed text-white/70">{site.description.medium}</p>
+            <Link href="/about" className="inline-flex items-center gap-3 border-b-2 border-white pb-1 text-sm font-bold hover:text-[var(--color-amber)]">Read our studio story →</Link>
+          </div>
+        </div>
+
+        <div className="mt-20 border-t-2 border-white/45 pt-10">
+          <p className="studio-kicker mb-8 text-white/55">Four rules on the wall</p>
+          <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {site.studioPrinciples.map((principle, index) => (
-              <article
-                key={principle.title}
-                className="group relative border border-[var(--surface-border)] bg-[#101012] p-6 sm:p-8 transition-all duration-300 hover:bg-[var(--surface)] hover:border-[var(--muted-soft)]"
-              >
-                <div className="absolute top-0 left-0 h-3 w-3 border-t-2 border-l-2 border-[var(--accent)] opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-x-1 group-hover:-translate-y-1" />
-                <div className="absolute bottom-0 right-0 h-3 w-3 border-b-2 border-r-2 border-[var(--cyan)] opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1 group-hover:translate-y-1" />
-
-                <p className="mb-5 font-mono-accent text-[0.65rem] uppercase tracking-[0.2em] text-[var(--accent)]">
-                  [ DRCT_0{index + 1} ]
-                </p>
-
-                <h3 className="font-display text-lg font-bold uppercase tracking-tight text-[var(--foreground)]">
-                  {principle.titleId}
-                </h3>
-
-                <p className="mt-4 font-body text-sm leading-relaxed text-[var(--muted)]">
-                  {principle.description}
-                </p>
+              <article key={principle.title} className={index % 2 ? "lg:translate-y-8" : ""}>
+                <span className="font-serif text-4xl italic text-[var(--color-amber)]">{index + 1}.</span>
+                <h3 className="mt-3 mb-3 text-2xl leading-[0.96] tracking-[-0.045em]">{principle.titleId}</h3>
+                <p className="mb-0 font-serif text-sm leading-relaxed text-white/65">{principle.description}</p>
               </article>
             ))}
           </div>

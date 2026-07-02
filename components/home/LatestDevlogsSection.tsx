@@ -1,106 +1,73 @@
-// components/home/LatestDevlogsSection.tsx
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import type { Devlog } from "@/types";
 
-type LatestDevlogsSectionProps = {
-  latestDevlogs: Devlog[];
-};
+type LatestDevlogsSectionProps = { latestDevlogs: Devlog[] };
 
 function formatDate(date: string) {
-  return new Intl.DateTimeFormat("id-ID", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  }).format(new Date(date));
+  const parsed = date.includes("T") ? new Date(date) : new Date(`${date}T00:00:00`);
+  return new Intl.DateTimeFormat("id-ID", { day: "numeric", month: "short", year: "numeric" }).format(parsed);
 }
 
-export function LatestDevlogsSection({
-  latestDevlogs,
-}: LatestDevlogsSectionProps) {
-  return (
-    <section className="relative border-b border-[var(--surface-border)] bg-[var(--background)] py-24 overflow-hidden">
-      <div
-        className="absolute inset-0 z-0 opacity-[0.15] pointer-events-none"
-        style={{
-          backgroundImage:
-            "radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px)",
-          backgroundSize: "24px 24px",
-        }}
-      />
+export function LatestDevlogsSection({ latestDevlogs }: LatestDevlogsSectionProps) {
+  const [leadNote, ...otherNotes] = latestDevlogs;
 
-      <Container className="relative z-10">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 border-b border-[var(--surface-border)] pb-6">
-          <div>
-            <div className="flex items-center gap-3 mb-2">
-              <span className="font-mono-accent text-[0.65rem] uppercase tracking-[0.25em] text-[var(--muted-soft)]">
-                {"// "}System_Feed
-              </span>
-            </div>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold uppercase tracking-tight text-[var(--foreground)]">
-              Transmission_Logs
+  return (
+    <section id="latest-devlogs" className="border-y-[3px] border-[var(--color-ink)] bg-[var(--color-mist-light)]">
+      <Container className="py-24 sm:py-28 lg:py-36">
+        <div className="mb-14 grid items-end gap-8 lg:grid-cols-12">
+          <div className="lg:col-span-8">
+            <p className="studio-kicker mb-4 text-[var(--color-brick)]">Development journal</p>
+            <h2 className="mb-0 text-[clamp(3.2rem,6vw,6.5rem)] leading-[0.86] tracking-[-0.075em]">
+              Notes, mistakes,<br />and things that <span className="font-serif font-normal italic text-[var(--color-studio-green)]">worked.</span>
             </h2>
           </div>
-
-          <Button
-            href="/devlog"
-            variant="ghost"
-            className="group rounded-none border border-transparent px-4 py-2 font-mono-accent text-xs uppercase tracking-[0.1em] text-[var(--muted)] transition-all hover:border-[var(--surface-border)] hover:bg-[var(--surface)] hover:text-[var(--accent)]"
-          >
-            [ View All Archives ]
-          </Button>
+          <div className="lg:col-span-3 lg:col-start-10">
+            <p className="mb-5 font-serif text-base leading-relaxed text-[var(--color-dust)]">
+              A public record of learning how to finish our first game—not a polished press feed.
+            </p>
+            <Link href="/devlog" className="text-sm font-bold underline decoration-2 underline-offset-4 hover:text-[var(--color-brick)]">Open the full journal →</Link>
+          </div>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {latestDevlogs.map((devlog, index) => (
-            <Link
-              key={devlog.slug}
-              href={`/devlog/${devlog.slug}`}
-              className="group relative flex flex-col justify-between bg-[#101012] p-6 sm:p-8 transition-all duration-300 hover:bg-[var(--surface)] hover:-translate-y-1"
-            >
-              <div className="absolute left-0 top-0 h-full w-[2px] bg-[var(--surface-border)] transition-colors duration-300 group-hover:bg-[var(--accent)]" />
-              <div className="absolute left-0 top-0 h-[2px] w-0 bg-[var(--accent)] transition-all duration-300 group-hover:w-full" />
-
-              <div>
-                <div className="mb-6 flex items-center justify-between border-b border-dashed border-[var(--surface-border)] pb-3 font-mono-accent text-[0.65rem] uppercase tracking-[0.15em] text-[var(--muted)]">
-                  <span className="text-[var(--accent)]">
-                    CAT_{devlog.category}
-                  </span>
-                  <span>LOG_00{index + 1}</span>
+        {leadNote ? (
+          <div className="grid gap-10 lg:grid-cols-12">
+            <Link href={`/devlog/${leadNote.slug}`} className="group relative block border-[3px] border-[var(--color-ink)] bg-[var(--color-amber)] p-7 shadow-[9px_9px_0_var(--color-ink)] sm:p-10 lg:col-span-7">
+              <span className="absolute right-5 top-5 font-serif text-5xl italic text-black/20">01</span>
+              <div className="flex min-h-[26rem] flex-col justify-between">
+                <div>
+                  <p className="studio-kicker mb-2">{leadNote.category}</p>
+                  <time dateTime={leadNote.date} className="text-xs font-semibold">{formatDate(leadNote.date)}</time>
                 </div>
-
-                <h3 className="font-display text-xl sm:text-2xl font-bold uppercase leading-snug tracking-tighter text-[var(--foreground)] transition-colors group-hover:text-[var(--accent)]">
-                  {devlog.title}
-                </h3>
-
-                <p className="mt-4 font-body text-sm leading-relaxed text-[var(--muted)] line-clamp-3">
-                  {devlog.summary}
-                </p>
+                <div>
+                  <h3 className="mb-5 max-w-[13ch] text-[clamp(2.4rem,5vw,5rem)] leading-[0.9] tracking-[-0.065em] transition-transform group-hover:-translate-y-1">
+                    {leadNote.title}
+                  </h3>
+                  <p className="mb-0 max-w-xl font-serif text-lg leading-relaxed text-black/65">{leadNote.summary}</p>
+                </div>
+                <span className="mt-8 text-sm font-black">Read this note →</span>
               </div>
-
-              <div className="mt-8 flex items-center justify-between pt-4 font-mono-accent text-[10px] text-[var(--muted-soft)]">
-                <span>{formatDate(devlog.date)}</span>
-                <span className="flex items-center gap-1 group-hover:text-[var(--cyan)] transition-colors">
-                  <svg
-                    width="10"
-                    height="10"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
-                  {devlog.readingTime}
-                </span>
-              </div>
-
-              <div className="absolute bottom-0 right-0 h-2 w-2 bg-[var(--surface-border)] transition-colors duration-300 group-hover:bg-[var(--cyan)]" />
             </Link>
-          ))}
-        </div>
+
+            <div className="lg:col-span-4 lg:col-start-9">
+              {otherNotes.map((note, index) => (
+                <Link key={note.slug} href={`/devlog/${note.slug}`} className={`group block py-7 ${index === 0 ? "border-y-[3px]" : "border-b-[3px]"} border-[var(--color-ink)]`}>
+                  <div className="mb-8 flex items-start justify-between gap-5">
+                    <div>
+                      <p className="studio-kicker mb-1 text-[var(--color-studio-green)]">{note.category}</p>
+                      <time dateTime={note.date} className="text-xs text-[var(--color-dust)]">{formatDate(note.date)}</time>
+                    </div>
+                    <span className="font-serif text-3xl italic text-[var(--color-brick)]">0{index + 2}</span>
+                  </div>
+                  <h3 className="mb-4 max-w-[17ch] text-3xl leading-[0.96] tracking-[-0.055em] group-hover:text-[var(--color-brick)] sm:text-4xl">{note.title}</h3>
+                  <p className="mb-0 font-serif text-sm leading-relaxed text-[var(--color-dust)]">{note.summary}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <p className="font-serif text-lg">The first development note is still being written.</p>
+        )}
       </Container>
     </section>
   );

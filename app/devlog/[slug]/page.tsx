@@ -1,69 +1,48 @@
-// app/devlog/[slug]/page.tsx
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { DevlogContentSection } from "@/components/devlog/DevlogContentSection";
-import { DevlogDetailHeroSection } from "@/components/devlog/DevlogDetailHeroSection";
+import ReactMarkdown from "react-markdown";
 import { getDevlogBySlug, getDevlogSlugs } from "@/lib/devlogs";
 import { getSiteConfig } from "@/lib/site";
+import styles from "../../concept-industrial/industrial.module.css";
 
-type DevlogDetailPageProps = {
-  params: Promise<{
-    slug: string;
-  }>;
-};
+type Props = { params: Promise<{ slug: string }> };
+export function generateStaticParams() { return getDevlogSlugs().map((slug) => ({ slug })); }
 
-export function generateStaticParams() {
-  return getDevlogSlugs().map((slug) => ({
-    slug,
-  }));
-}
-
-export async function generateMetadata({
-  params,
-}: DevlogDetailPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const devlog = getDevlogBySlug(slug);
+  const note = getDevlogBySlug(slug);
   const site = getSiteConfig();
-
-  if (!devlog) {
-    return {
-      title: "Devlog Not Found",
-    };
-  }
-
-  return {
-    title: devlog.title,
-    description: devlog.summary,
-    openGraph: {
-      title: `${devlog.title} | ${site.siteName}`,
-      description: devlog.summary,
-      images: [
-        {
-          url: site.seo.ogImage,
-          width: 1200,
-          height: 630,
-          alt: devlog.title,
-        },
-      ],
-    },
-  };
+  if (!note) return { title: "Devlog Not Found" };
+  return { title: note.title, description: note.summary, openGraph: { title: `${note.title} | ${site.siteName}`, description: note.summary } };
 }
 
-export default async function DevlogDetailPage({
-  params,
-}: DevlogDetailPageProps) {
+function formatDate(date: string) {
+  const parsed = date.includes("T") ? new Date(date) : new Date(`${date}T00:00:00`);
+  return new Intl.DateTimeFormat("id-ID", { day: "numeric", month: "long", year: "numeric" }).format(parsed);
+}
+
+export default async function DevlogDetailPage({ params }: Props) {
   const { slug } = await params;
-  const devlog = getDevlogBySlug(slug);
-
-  if (!devlog) {
-    notFound();
-  }
-
+  const note = getDevlogBySlug(slug);
+  if (!note) notFound();
   return (
-    <main>
-      <DevlogDetailHeroSection devlog={devlog} />
-
-      <DevlogContentSection devlog={devlog} />
+    <main className={`${styles.page} ${styles.subpage}`}>
+      <section className={styles.subHero}>
+        <div className={styles.frame}>
+          <div className={styles.subHeroMeta}><span>{note.category} / DEVELOPMENT RECORD</span><span>{formatDate(note.date)} · {note.readingTime}</span></div>
+          <Link href="/devlog" className={styles.backLink}>← JOURNAL INDEX</Link>
+          <div className={`${styles.subHeroGrid} mt-12`}>
+            <h1 className={styles.articleTitle}>{note.title}</h1>
+            <p className={styles.subLead}>{note.summary}</p>
+          </div>
+        </div>
+      </section>
+      <section className={styles.proseWrap}>
+        <div className={styles.frame}>
+          <article className={styles.prose}><ReactMarkdown>{note.content}</ReactMarkdown></article>
+        </div>
+      </section>
     </main>
   );
 }

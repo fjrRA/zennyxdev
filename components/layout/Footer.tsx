@@ -1,117 +1,44 @@
-// components/layout/Footer.tsx
-import Image from "next/image";
-import logoIcon from "@/app/icon.png";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { getSiteConfig } from "@/lib/site";
 import { getActiveSocialLinks } from "@/lib/socials";
 
 const footerLinks = [
-  {
-    label: "Games",
-    href: "/games",
-  },
-  {
-    label: "Devlog",
-    href: "/devlog",
-  },
-  {
-    label: "About",
-    href: "/about",
-  },
-  {
-    label: "Contact",
-    href: "/contact",
-  },
+  { label: "Games", href: "/games" },
+  { label: "Devlog", href: "/devlog" },
+  { label: "Studio", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Footer() {
   const site = getSiteConfig();
-  const socialLinks = getActiveSocialLinks();
+  const socials = getActiveSocialLinks();
 
   return (
-    <footer className="border-t border-[var(--surface-border)] bg-[rgba(5,5,5,0.55)]">
-      <Container>
-        <div className="grid gap-10 py-10 md:grid-cols-[1.5fr_1fr_1fr]">
-          <div>
-            <Link href="/" className="inline-flex items-center gap-3">
-              <span className="flex size-10 items-center justify-center overflow-hidden rounded-full border border-[var(--surface-border)] bg-white transition-colors group-hover:border-[var(--accent)]">
-                <Image
-                  src={logoIcon}
-                  alt="Zennyx Interactive Studio logo"
-                  width={40}
-                  height={40}
-                  className="h-full w-full object-cover"
-                  priority
-                />
-              </span>
-
-              <div>
-                <p className="font-display text-base font-semibold">
-                  {site.siteName}
-                </p>
-                <p className="mt-1 font-mono-accent text-[0.65rem] uppercase tracking-[0.18em] text-[var(--muted-soft)]">
-                  {site.type}
-                </p>
-              </div>
-            </Link>
-
-            <p className="mt-5 max-w-md text-sm leading-7 text-[var(--muted)]">
-              {site.footer.text}
-            </p>
+    <footer className="border-t-[8px] border-[#e0a72e] bg-[#141816] text-[#ecece6]">
+      <Container className="py-12 sm:py-16">
+        <div className="grid gap-12 border-b border-white/25 pb-12 lg:grid-cols-12">
+          <div className="lg:col-span-6">
+            <p className="mb-3 text-2xl font-bold tracking-[-0.04em]">{site.siteName}</p>
+            <p className="mb-0 max-w-xl font-serif text-base leading-relaxed text-[#aeb4af]">{site.footer.text}</p>
           </div>
 
-          <div>
-            <h2 className="font-mono-accent text-xs uppercase tracking-[0.18em] text-[var(--accent)]">
-              Explore
-            </h2>
+          <nav aria-label="Footer navigation" className="lg:col-span-2 lg:col-start-9">
+            <p className="mb-4 font-mono text-[0.58rem] font-bold uppercase tracking-[0.12em] text-[#e0a72e]">Explore</p>
+            <ul className="space-y-2">
+              {footerLinks.map((link) => <li key={link.href}><Link href={link.href} className="text-sm text-[#aeb4af] hover:text-white">{link.label}</Link></li>)}
+            </ul>
+          </nav>
 
-            <ul className="mt-4 space-y-3">
-              {footerLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+          <div className="lg:col-span-2">
+            <p className="mb-4 font-mono text-[0.58rem] font-bold uppercase tracking-[0.12em] text-[#e0a72e]">Find us</p>
+            <ul className="space-y-2">
+              {socials.map((link) => <li key={link.name}><a href={link.href} className="break-all text-sm text-[#aeb4af] hover:text-white">{link.label}</a></li>)}
             </ul>
           </div>
-
-          <div>
-            <h2 className="font-mono-accent text-xs uppercase tracking-[0.18em] text-[var(--accent)]">
-              Follow / Contact
-            </h2>
-
-            {socialLinks.length > 0 ? (
-              <ul className="mt-4 space-y-3">
-                {socialLinks.map((link) => (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
-                      target={link.type === "email" ? undefined : "_blank"}
-                      rel={link.type === "email" ? undefined : "noreferrer"}
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
-                Social links will be added later.
-              </p>
-            )}
-          </div>
         </div>
-
-        <div className="border-t border-[var(--surface-border)] py-5">
-          <p className="text-xs text-[var(--muted-soft)]">
-            {site.footer.copyright}
-          </p>
+        <div className="flex flex-col gap-3 pt-6 font-mono text-[0.58rem] uppercase tracking-[0.08em] text-[#7d8681] sm:flex-row sm:justify-between">
+          <span>{site.footer.copyright}</span><span>Playable work / Indonesia / Studio build 00.1</span>
         </div>
       </Container>
     </footer>

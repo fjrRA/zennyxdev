@@ -1,9 +1,7 @@
-// components/home/HeroSection.tsx
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import type { Devlog, Game, SiteConfig } from "@/types";
-import { InfoRow } from "./InfoRow";
 
 type HeroSectionProps = {
   site: SiteConfig;
@@ -11,122 +9,93 @@ type HeroSectionProps = {
   latestDevlog?: Devlog;
 };
 
-export function HeroSection({
-  site,
-  featuredGame,
-  latestDevlog,
-}: HeroSectionProps) {
+export function HeroSection({ site, featuredGame, latestDevlog }: HeroSectionProps) {
+  const projectHref = featuredGame ? `/games/${featuredGame.slug}` : "/games";
+
   return (
-    <section className="relative w-full min-h-[90vh] flex flex-col items-center justify-center overflow-hidden border-b border-[var(--surface-border)] bg-[var(--background)] py-20">
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,rgba(255,69,0,0.06)_0%,transparent_50%)]" />
-      <div
-        className="absolute inset-0 z-0 opacity-40"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-          maskImage:
-            "radial-gradient(ellipse 70% 70% at 50% 50%, #000 10%, transparent 100%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse 70% 70% at 50% 50%, #000 10%, transparent 100%)",
-        }}
-      />
-
-      <div className="absolute top-6 left-6 hidden sm:flex flex-col gap-1 z-10 font-mono-accent text-[10px] uppercase tracking-widest text-[var(--muted)]">
-        <div className="flex items-center gap-2">
-          <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] animate-pulse shadow-[0_0_8px_var(--accent)]" />
-          <span className="text-[var(--accent)]">SYS.BOOT_SEQ</span>
-        </div>
-        <p>ZNX.OS // DISPATCH 001</p>
-      </div>
-
-      <div className="absolute top-6 right-6 hidden sm:flex flex-col items-end gap-1 z-10 font-mono-accent text-[10px] uppercase tracking-widest text-[var(--muted)] text-right">
-        <p className="text-[var(--cyan)]">UPLINK_SECURE</p>
-        <p>ENV: STATIC_V0.1</p>
-      </div>
-
-      <div className="absolute bottom-6 left-6 hidden sm:flex flex-col gap-1 z-10 font-mono-accent text-[10px] uppercase tracking-widest text-[var(--muted)]">
-        <p>TGT_PRJ: {featuredGame?.title || "ANDARA"}</p>
-        <p>STATUS: {featuredGame?.status || "PROTOTYPING"}</p>
-      </div>
-
-      <div className="absolute bottom-6 right-6 hidden sm:flex items-end gap-2 z-10 font-mono-accent text-[10px] uppercase tracking-widest text-[var(--muted)]">
-        <div className="flex gap-[2px] items-end h-4">
-          {[40, 80, 50, 100, 60].map((height, i) => (
-            <div
-              key={i}
-              className="w-1 bg-[var(--muted-soft)] animate-pulse"
-              style={{ height: `${height}%`, animationDelay: `${i * 0.15}s` }}
-            />
-          ))}
-        </div>
-        <span className="text-[var(--muted-soft)] leading-none">
-          FREQ.MATCH
-        </span>
-      </div>
-
-      <Container className="relative z-20 flex flex-col items-center text-center">
-        <div className="mb-8 inline-flex items-center gap-3 border border-[var(--surface-border)] bg-[rgba(15,15,16,0.6)] backdrop-blur-md px-4 py-1.5 text-[0.65rem] font-mono-accent uppercase tracking-[0.25em] text-[var(--muted)] shadow-xl">
-          <span className="text-[var(--cyan)] font-bold animate-pulse">
-            &gt;_
-          </span>
-          {site.home.heroLabel || "INITIALIZING ZENNYX"}
+    <section className="overflow-hidden bg-[var(--color-mist-light)]">
+      <Container className="relative py-12 sm:py-16 lg:py-24">
+        <div className="mb-10 flex items-center gap-4 lg:mb-16">
+          <span className="h-[3px] w-12 bg-[var(--color-amber)]" aria-hidden="true" />
+          <p className="studio-kicker mb-0 text-[var(--color-studio-green)]">
+            Zennyx Interactive Studio · Indonesia
+          </p>
         </div>
 
-        <h1 className="group relative font-display text-4xl sm:text-6xl md:text-[5.5rem] font-black uppercase leading-[0.95] tracking-tighter text-[var(--foreground)] selection:bg-[var(--accent)] selection:text-[#050505]">
-          <span className="absolute inset-0 blur-2xl opacity-0 bg-gradient-to-r from-[var(--accent)] to-[var(--cyan)] bg-clip-text text-transparent transition-opacity duration-700 group-hover:opacity-40">
-            Small playable worlds
-            <br />
-            before bigger dreams.
-          </span>
+        <div className="grid items-center gap-16 lg:grid-cols-12 lg:gap-8">
+          <div className="relative z-10 lg:col-span-6">
+            <h1 className="mb-8 max-w-[10ch] text-[clamp(3.5rem,7.5vw,7.5rem)] leading-[0.82] tracking-[-0.075em]">
+              <span className="block">Small games.</span>
+              <span className="font-serif block py-2 font-normal italic text-[var(--color-studio-green)]">Big worlds.</span>
+              <span className="block text-[0.58em] leading-[0.95] tracking-[-0.055em]">One release at a time.</span>
+            </h1>
 
-          <span className="relative">
-            Small playable worlds
-            <br />
-            <span className="text-[var(--muted-soft)] transition-colors duration-500 group-hover:text-[var(--foreground)]">
-              before bigger dreams.
+            <p className="mb-0 max-w-lg font-serif text-lg leading-relaxed text-[var(--color-dust)] sm:text-xl">
+              {site.home.heroDescription}
+            </p>
+
+            <div className="mt-9 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
+              <Button href={projectHref}>Enter the current project <span aria-hidden="true">↗</span></Button>
+              <Button href="/devlog" variant="ghost">Read the build notes <span aria-hidden="true">→</span></Button>
+            </div>
+
+            {latestDevlog && (
+              <Link href={`/devlog/${latestDevlog.slug}`} className="mt-12 block max-w-sm -rotate-1 border-2 border-[var(--color-ink)] bg-white p-4 shadow-[5px_5px_0_var(--color-studio-green)] transition-transform hover:rotate-0">
+                <span className="studio-kicker text-[var(--color-brick)]">Pinned from the journal</span>
+                <span className="mt-2 block text-sm font-bold leading-snug">{latestDevlog.title} →</span>
+              </Link>
+            )}
+          </div>
+
+          <div className="relative lg:col-span-6">
+            <span className="absolute -left-4 -top-6 z-20 block -rotate-6 bg-[var(--color-amber)] px-4 py-2 text-xs font-black uppercase tracking-[0.12em] sm:-left-8">
+              Work in progress
             </span>
-          </span>
-        </h1>
 
-        <p className="mt-8 max-w-2xl font-mono-accent text-sm sm:text-base leading-relaxed text-[var(--muted)] lowercase">
-          {"// "}{" "}
-          {site.home.heroDescription ||
-            "Membangun semesta fiksi, satu baris kode dan satu aset pada satu waktu."}
-        </p>
+            <Link href={projectHref} className="group mx-1 block rotate-[1.2deg] border-[3px] border-[var(--color-ink)] bg-[var(--color-studio-green)] text-white shadow-[7px_7px_0_var(--color-ink)] transition-transform duration-200 hover:rotate-0 sm:mx-0 sm:shadow-[12px_12px_0_var(--color-ink)]">
+              <div className="relative min-h-[30rem] overflow-hidden p-7 sm:min-h-[36rem] sm:p-10">
+                <div className="absolute right-0 top-0 hidden border-b-2 border-l-2 border-white/40 px-4 py-3 text-right text-[0.625rem] uppercase tracking-[0.14em] text-white/65 sm:block">
+                  Prototype<br />PC
+                </div>
 
-        <div className="mt-12 flex flex-wrap justify-center items-center gap-6">
-          <Button
-            href={site.home.primaryCta.href}
-            className="group relative overflow-hidden rounded-none border border-[var(--accent)] bg-transparent px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--accent)] transition-all duration-300 hover:bg-[var(--accent)] hover:text-[#050505] hover:shadow-[0_0_20px_var(--accent-soft)]"
-          >
-            <span className="absolute left-0 top-0 h-[2px] w-0 bg-[var(--cyan)] transition-all duration-300 group-hover:w-full" />
-            Explore Projects
-          </Button>
+                <div className="flex h-full min-h-[26rem] flex-col justify-between sm:min-h-[31rem]">
+                  <div>
+                    <p className="mb-2 text-sm text-white/60">Current production</p>
+                    <p className="mb-0 font-serif text-2xl italic text-[var(--color-amber)]">Untitled</p>
+                  </div>
 
-          <Button
-            href={site.home.secondaryCta.href}
-            variant="ghost"
-            className="rounded-none border-b border-transparent px-6 py-4 text-xs font-mono-accent uppercase tracking-[0.1em] text-[var(--muted)] transition-all duration-300 hover:border-[var(--foreground)] hover:text-[var(--foreground)]"
-          >
-            [ Read Devlogs ]
-          </Button>
+                  <div className="py-12">
+                    <p className="mb-0 break-words text-[clamp(3.2rem,8vw,7.7rem)] font-black uppercase leading-[0.72] tracking-[-0.085em] text-[var(--color-amber)]">
+                      Andara
+                    </p>
+                    <p className="mb-0 mt-6 max-w-[16ch] text-2xl font-semibold leading-[0.95] tracking-[-0.04em] sm:text-4xl">
+                      Side-scrolling beat &apos;em up
+                    </p>
+                  </div>
+
+                  <div className="border-t-2 border-white/45 pt-5">
+                    <div className="flex items-end justify-between gap-8">
+                      <div>
+                        <p className="mb-1 text-xs uppercase tracking-[0.12em] text-white/55">On the desk now</p>
+                        <p className="mb-0 font-bold">{featuredGame?.developmentStage.current ?? "Early prototype"}</p>
+                      </div>
+                      <span className="text-3xl transition-transform group-hover:translate-x-2" aria-hidden="true">→</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+
+          </div>
         </div>
       </Container>
 
-      {featuredGame ? (
-        <div className="sr-only">
-          <dl>
-            <InfoRow label="Project" value={featuredGame.title} />
-          </dl>
-        </div>
-      ) : null}
-
-      {latestDevlog ? (
-        <Link href={`/devlog/${latestDevlog.slug}`} className="sr-only">
-          {latestDevlog.title}
-        </Link>
-      ) : null}
+      <div className="overflow-hidden border-y-[3px] border-[var(--color-ink)] bg-[var(--color-amber)] py-3">
+        <p className="mb-0 text-center text-xs font-black uppercase tracking-[0.12em] sm:text-sm sm:tracking-[0.14em]">
+          <span className="sm:hidden">Andara prototype — current build</span>
+          <span className="hidden sm:inline">Current build — Andara prototype — One stage — PC — Real progress, no overpromises —</span>
+        </p>
+      </div>
     </section>
   );
 }

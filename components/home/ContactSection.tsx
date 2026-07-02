@@ -1,60 +1,28 @@
-// components/home/ContactSection.tsx
-import { Button } from "@/components/ui/Button";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import type { SocialsConfig } from "@/types";
 
-type ContactSectionProps = {
-  socials: SocialsConfig;
-};
+type ContactSectionProps = { socials: SocialsConfig };
 
 export function ContactSection({ socials }: ContactSectionProps) {
   return (
-    <section className="relative border-t border-[var(--surface-border)] bg-[#0a0a0b] py-24">
-      <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,1)_1px, transparent 1px)",
-          backgroundSize: "100% 8px",
-        }}
-      />
-
-      <Container>
-        <div className="flex flex-col items-center text-center">
-          <div className="mb-8 flex items-center gap-3 border border-[var(--surface-border)] bg-[var(--surface)] px-4 py-1.5">
-            <span className="h-2 w-2 bg-[var(--cyan)] animate-pulse shadow-[0_0_8px_var(--cyan)]" />
-            <p className="font-mono-accent text-[0.65rem] uppercase tracking-[0.25em] text-[var(--cyan)]">
-              UPLINK_ENDPOINT_READY
-            </p>
+    <section id="contact-cta" className="border-y-[3px] border-[var(--color-ink)] bg-[var(--color-amber)]">
+      <Container className="py-20 sm:py-24 lg:py-28">
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-8">
+            <p className="studio-kicker mb-5">The build keeps moving</p>
+            <h2 className="mb-7 max-w-[13ch] text-[clamp(3.2rem,6vw,6.5rem)] leading-[0.86] tracking-[-0.07em]">
+              Come back for the next <span className="font-serif font-normal italic text-[var(--color-studio-green)]">playable thing.</span>
+            </h2>
+            <Link href={socials.cta.primaryButton.href} className="inline-flex items-center gap-4 border-b-[4px] border-[var(--color-ink)] pb-2 text-2xl font-black tracking-[-0.04em] hover:text-[var(--color-studio-green)] sm:text-3xl">
+              Read the development journal <span aria-hidden="true">→</span>
+            </Link>
           </div>
 
-          <h2 className="font-display text-4xl sm:text-5xl font-bold uppercase tracking-tight text-[var(--foreground)] mb-6">
-            {socials.cta.title}
-          </h2>
-
-          <p className="max-w-xl font-body text-base leading-relaxed text-[var(--muted)] mb-12">
-            {socials.cta.description}
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button
-              href={socials.cta.primaryButton.href}
-              className="rounded-none border border-[var(--accent)] bg-[var(--accent)] px-10 py-4 text-xs font-bold uppercase tracking-[0.2em] text-[#050505] hover:bg-transparent hover:text-[var(--accent)] transition-all"
-            >
-              {socials.cta.primaryButton.label}
-            </Button>
-
-            <Button
-              href={socials.cta.secondaryButton.href}
-              variant="secondary"
-              className="rounded-none border border-[var(--surface-border)] bg-transparent px-10 py-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--muted)] hover:border-[var(--foreground)] hover:text-[var(--foreground)] transition-all"
-            >
-              {socials.cta.secondaryButton.label}
-            </Button>
-          </div>
-
-          <div className="mt-20 font-mono-accent text-[0.6rem] uppercase tracking-[0.3em] text-[var(--surface-border)]">
-            ZNX_OS // SYSTEM_VERSION_0.1_STABLE // 2026
+          <div className="border-l-[3px] border-[var(--color-ink)] pl-6 lg:col-span-3 lg:col-start-10">
+            <p className="font-serif mb-6 text-lg leading-relaxed text-black/65">{socials.contactMessage.note}</p>
+            <p className="studio-kicker mb-2">Write to us</p>
+            <a href={socials.primaryContact.href} className="break-all text-sm font-black underline decoration-2 underline-offset-4 hover:text-[var(--color-studio-green)]">{socials.primaryContact.value}</a>
           </div>
         </div>
       </Container>
