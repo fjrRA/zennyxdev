@@ -1,133 +1,474 @@
 // components/home/CurrentGameSection.tsx
+
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+
 import type { Game } from "@/types";
 
 type CurrentGameSectionProps = {
   featuredGame?: Game;
 };
 
-export function CurrentGameSection({ featuredGame }: CurrentGameSectionProps) {
+export function CurrentGameSection({
+  featuredGame,
+}: CurrentGameSectionProps) {
   return (
-    <section className="relative border-b border-[var(--surface-border)] bg-[var(--background)] py-24">
-      <div className="absolute right-0 top-0 h-full w-1/3 bg-[radial-gradient(ellipse_at_right,rgba(249,115,22,0.03),transparent_70%)] pointer-events-none" />
+    <section
+      id="featured-game"
+      className="
+        border-b
+        border-[var(--surface-border)]
+        bg-[var(--paper-soft)]
+        text-[var(--ink)]
+      "
+    >
+      <Container className="py-20 sm:py-24 lg:py-32">
+        <div
+          className="
+            grid
+            gap-6
+            border-b
+            border-[var(--surface-border)]
+            pb-8
+            md:grid-cols-12
+            md:items-end
+            lg:pb-10
+          "
+        >
+          <div className="md:col-span-7">
+            <p
+              className="
+                editorial-label
+                mb-3
+                text-[var(--accent)]
+              "
+            >
+              01 / Active production
+            </p>
 
-      <Container className="relative z-10">
-        <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[var(--surface-border)] pb-6">
-          <div>
-            <div className="flex items-center gap-3 mb-3">
-              <span className="flex h-2 w-2 items-center justify-center bg-[var(--accent)] animate-pulse shadow-[0_0_8px_var(--accent)]" />
-              <p className="font-mono-accent text-[0.65rem] uppercase tracking-[0.25em] text-[var(--accent)]">
-                Active Production File
-              </p>
-            </div>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold uppercase tracking-tight text-[var(--foreground)]">
-              Current_Target
+            <h2
+              className="
+                mb-0
+                text-[clamp(2.5rem,5vw,5.5rem)]
+                font-semibold
+                uppercase
+                leading-[0.9]
+                tracking-[-0.055em]
+              "
+            >
+              Current game
             </h2>
           </div>
-          <p className="font-mono-accent text-xs text-[var(--muted)] md:text-right max-w-xs">
-            {"// "}Game pertama yang menjadi fokus produksi utama Zennyx saat ini.
+
+          <p
+            className="
+              mb-0
+              max-w-md
+              text-sm
+              leading-relaxed
+              text-[var(--ash)]
+              md:col-span-4
+              md:col-start-9
+              md:text-right
+            "
+          >
+            Satu proyek aktif menjadi fokus produksi utama sebelum
+            kami bergerak menuju dunia yang lebih besar.
           </p>
         </div>
 
         {featuredGame ? (
-          <div className="relative border border-[var(--surface-border)] bg-[var(--surface)] group">
-            <div className="absolute -top-1 -left-1 h-2 w-2 border-t-2 border-l-2 border-[var(--muted-soft)]" />
-            <div className="absolute -top-1 -right-1 h-2 w-2 border-t-2 border-r-2 border-[var(--muted-soft)]" />
-            <div className="absolute -bottom-1 -left-1 h-2 w-2 border-b-2 border-l-2 border-[var(--muted-soft)]" />
-            <div className="absolute -bottom-1 -right-1 h-2 w-2 border-b-2 border-r-2 border-[var(--accent)] transition-colors duration-300" />
+          <>
+            <div
+              className="
+                grid
+                border-b
+                border-[var(--surface-border)]
+                lg:grid-cols-12
+              "
+            >
+              <article
+                className="
+                  py-10
+                  sm:py-14
+                  lg:col-span-8
+                  lg:border-r
+                  lg:border-[var(--surface-border)]
+                  lg:pr-12
+                  xl:pr-16
+                "
+              >
+                <div
+                  className="
+                    mb-8
+                    flex
+                    flex-wrap
+                    items-center
+                    gap-x-5
+                    gap-y-2
+                  "
+                >
+                  <p
+                    className="
+                      editorial-label
+                      mb-0
+                      text-[var(--accent)]
+                    "
+                  >
+                    {featuredGame.status}
+                  </p>
 
-            <div className="grid lg:grid-cols-[1.3fr_0.7fr] divide-y lg:divide-y-0 lg:divide-x divide-[var(--surface-border)]">
-              <div className="p-8 sm:p-10">
-                <div className="mb-6 flex flex-wrap items-center gap-4">
-                  <span className="border border-[var(--accent)] bg-[var(--accent-soft)] px-3 py-1 font-mono-accent text-[0.65rem] uppercase tracking-[0.2em] text-[var(--accent)]">
-                    STATUS: {featuredGame.status}
-                  </span>
-                  <span className="font-mono-accent text-[0.65rem] uppercase tracking-[0.2em] text-[var(--muted)]">
-                    ID: {featuredGame.slug.toUpperCase()}
-                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="
+                      hidden
+                      h-px
+                      w-8
+                      bg-[var(--surface-border)]
+                      sm:block
+                    "
+                  />
+
+                  <p
+                    className="
+                      editorial-label
+                      mb-0
+                      text-[var(--ash)]
+                    "
+                  >
+                    {featuredGame.targetBuild}
+                  </p>
                 </div>
 
-                <h3 className="font-display text-4xl sm:text-5xl font-bold uppercase tracking-tighter text-[var(--foreground)] mb-6">
+                <h3
+                  className="
+                    mb-8
+                    max-w-[11ch]
+                    text-balance
+                    text-[clamp(3rem,7vw,7rem)]
+                    font-semibold
+                    uppercase
+                    leading-[0.88]
+                    tracking-[-0.065em]
+                  "
+                >
                   {featuredGame.title}
                 </h3>
 
-                <p className="max-w-2xl font-body text-base leading-relaxed text-[var(--muted)] mb-8">
+                <p
+                  className="
+                    font-serif
+                    mb-0
+                    max-w-2xl
+                    text-lg
+                    leading-relaxed
+                    text-[var(--foreground)]
+                    sm:text-xl
+                  "
+                >
                   {featuredGame.summary}
                 </p>
 
-                <div className="mb-10 flex flex-wrap gap-3 font-mono-accent text-xs text-[var(--muted-soft)]">
-                  {featuredGame.genre.map((item) => (
-                    <span
-                      key={item}
-                      className="hover:text-[var(--cyan)] transition-colors cursor-default"
-                    >
-                      [ {item.toUpperCase()} ]
-                    </span>
-                  ))}
-                </div>
-
-                <div>
+                <div className="mt-10 sm:mt-12">
                   <Button
                     href={`/games/${featuredGame.slug}`}
-                    className="group relative inline-flex overflow-hidden rounded-none border border-[var(--surface-border)] bg-transparent px-6 py-3 text-xs font-bold uppercase tracking-[0.15em] text-[var(--foreground)] transition-all hover:border-[var(--accent)] hover:text-[var(--accent)]"
                   >
-                    <span className="absolute bottom-0 left-0 h-0 w-full bg-[var(--accent-soft)] transition-all duration-300 group-hover:h-full -z-10" />
-                    Access Core Data{" "}
-                    <span className="ml-2 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all">
-                      -&gt;
+                    View project
+
+                    <span aria-hidden="true">
+                      →
                     </span>
                   </Button>
                 </div>
-              </div>
+              </article>
 
-              <div className="bg-[#101012] p-8 sm:p-10 flex flex-col justify-center relative overflow-hidden">
-                <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[linear-gradient(rgba(255,255,255,1)_1px,transparent_1px)] bg-[size:100%_4px]" />
-
-                <p className="font-mono-accent text-[0.65rem] uppercase tracking-[0.25em] text-[var(--cyan)] mb-6 flex items-center gap-2">
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="square"
+              <aside
+                className="
+                  bg-[var(--asphalt)]
+                  px-6
+                  py-10
+                  text-[var(--paper)]
+                  sm:px-8
+                  sm:py-12
+                  lg:col-span-4
+                  lg:px-10
+                  lg:py-14
+                "
+              >
+                <div
+                  className="
+                    border-b
+                    border-[rgba(241,236,226,0.22)]
+                    pb-8
+                  "
+                >
+                  <p
+                    className="
+                      editorial-label
+                      mb-3
+                      text-[var(--concrete)]
+                    "
                   >
-                    <polyline points="4 14 10 14 10 20" />
-                    <polyline points="20 10 14 10 14 4" />
-                    <line x1="14" y1="10" x2="21" y2="3" />
-                    <line x1="3" y1="21" x2="10" y2="14" />
-                  </svg>
-                  Prototype_Focus_Log
-                </p>
+                    Current stage
+                  </p>
 
-                <ul className="space-y-4 font-mono-accent text-xs leading-relaxed text-[var(--muted)]">
-                  {featuredGame.prototypeScope.slice(0, 5).map((item) => (
-                    <li key={item} className="flex items-start gap-3 group/item">
-                      <span className="text-[var(--surface-border)] group-hover/item:text-[var(--accent)] transition-colors mt-0.5">
-                        {">"}
-                      </span>
-                      <span className="group-hover/item:text-[var(--foreground)] transition-colors">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-8 pt-6 border-t border-dashed border-[var(--surface-border)]">
-                  <p className="font-mono-accent text-[10px] text-[var(--muted-soft)]">
-                    {"// "}SYS_NOTE: Scope strictly controlled.
-                    <br />
-                    Expansion locked until core loop verified.
+                  <p
+                    className="
+                      mb-0
+                      text-xl
+                      font-semibold
+                      leading-snug
+                      sm:text-2xl
+                    "
+                  >
+                    {featuredGame.developmentStage.current}
                   </p>
                 </div>
-              </div>
+
+                <div
+                  className="
+                    border-b
+                    border-[rgba(241,236,226,0.22)]
+                    py-8
+                  "
+                >
+                  <p
+                    className="
+                      editorial-label
+                      mb-3
+                      text-[var(--concrete)]
+                    "
+                  >
+                    Next milestone
+                  </p>
+
+                  <p
+                    className="
+                      mb-0
+                      text-xl
+                      font-semibold
+                      leading-snug
+                      sm:text-2xl
+                    "
+                  >
+                    {featuredGame.developmentStage.nextMilestone}
+                  </p>
+                </div>
+
+                <div className="pt-8">
+                  <p
+                    className="
+                      editorial-label
+                      mb-5
+                      text-[var(--concrete)]
+                    "
+                  >
+                    Current gameplay focus
+                  </p>
+
+                  <ol>
+                    {featuredGame.gameplayFocus.points
+                      .slice(0, 5)
+                      .map((item, index) => {
+                        const itemNumber = String(index + 1).padStart(
+                          2,
+                          "0",
+                        );
+
+                        return (
+                          <li
+                            key={item}
+                            className="
+                              grid
+                              grid-cols-[2.5rem_1fr]
+                              gap-3
+                              border-t
+                              border-[rgba(241,236,226,0.22)]
+                              py-4
+                            "
+                          >
+                            <span
+                              className="
+                                font-mono-accent
+                                text-[0.6875rem]
+                                text-[var(--concrete)]
+                              "
+                            >
+                              {itemNumber}
+                            </span>
+
+                            <span
+                              className="
+                                text-sm
+                                font-medium
+                                leading-relaxed
+                              "
+                            >
+                              {item}
+                            </span>
+                          </li>
+                        );
+                      })}
+                  </ol>
+                </div>
+              </aside>
             </div>
-          </div>
+
+            <dl
+              className="
+                grid
+                border-b
+                border-[var(--surface-border)]
+                sm:grid-cols-2
+                lg:grid-cols-4
+              "
+            >
+              <div
+                className="
+                  py-5
+                  sm:pr-6
+                  lg:py-6
+                "
+              >
+                <dt
+                  className="
+                    editorial-label
+                    text-[var(--ash)]
+                  "
+                >
+                  Genre
+                </dt>
+
+                <dd
+                  className="
+                    mt-2
+                    text-sm
+                    font-medium
+                    leading-relaxed
+                  "
+                >
+                  {featuredGame.genre.join(" / ")}
+                </dd>
+              </div>
+
+              <div
+                className="
+                  border-t
+                  border-[var(--surface-border)]
+                  py-5
+                  sm:border-l
+                  sm:border-t-0
+                  sm:pl-6
+                  lg:py-6
+                "
+              >
+                <dt
+                  className="
+                    editorial-label
+                    text-[var(--ash)]
+                  "
+                >
+                  Setting
+                </dt>
+
+                <dd
+                  className="
+                    mt-2
+                    text-sm
+                    font-medium
+                    leading-relaxed
+                  "
+                >
+                  {featuredGame.setting.name}
+                </dd>
+              </div>
+
+              <div
+                className="
+                  border-t
+                  border-[var(--surface-border)]
+                  py-5
+                  sm:pr-6
+                  lg:border-l
+                  lg:border-t-0
+                  lg:pl-6
+                  lg:py-6
+                "
+              >
+                <dt
+                  className="
+                    editorial-label
+                    text-[var(--ash)]
+                  "
+                >
+                  Platform
+                </dt>
+
+                <dd
+                  className="
+                    mt-2
+                    text-sm
+                    font-medium
+                    leading-relaxed
+                  "
+                >
+                  {featuredGame.platforms.join(" / ")}
+                </dd>
+              </div>
+
+              <div
+                className="
+                  border-t
+                  border-[var(--surface-border)]
+                  py-5
+                  sm:border-l
+                  sm:pl-6
+                  lg:border-t-0
+                  lg:py-6
+                "
+              >
+                <dt
+                  className="
+                    editorial-label
+                    text-[var(--ash)]
+                  "
+                >
+                  Production
+                </dt>
+
+                <dd
+                  className="
+                    mt-2
+                    text-sm
+                    font-medium
+                    leading-relaxed
+                  "
+                >
+                  {featuredGame.productionType}
+                </dd>
+              </div>
+            </dl>
+          </>
         ) : (
-          <div className="border border-dashed border-[var(--surface-border)] p-10 text-center font-mono-accent text-sm text-[var(--muted)]">
-            ERR_404: NO_ACTIVE_PRODUCTION_DATA_FOUND
+          <div
+            className="
+              border-b
+              border-[var(--surface-border)]
+              py-16
+            "
+          >
+            <p
+              className="
+                font-serif
+                mb-0
+                max-w-2xl
+                text-xl
+                leading-relaxed
+                text-[var(--ash)]
+              "
+            >
+              Belum ada proyek aktif yang dipublikasikan.
+            </p>
           </div>
         )}
       </Container>
