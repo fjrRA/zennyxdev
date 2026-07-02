@@ -1,20 +1,21 @@
 // app/layout.tsx
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
-import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
-import "./globals.css";
-import { getSiteConfig } from "@/lib/site";
 
-const inter = Inter({
+import { Footer } from "@/components/layout/Footer";
+import { Navbar } from "@/components/layout/Navbar";
+import { getSiteConfig } from "@/lib/site";
+import type { Metadata, Viewport } from "next";
+import { Archivo, Source_Serif_4 } from "next/font/google";
+import "./globals.css";
+
+const archivo = Archivo({
   subsets: ["latin"],
-  variable: "--font-body",
+  variable: "--font-sans",
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-serif",
   display: "swap",
 });
 
@@ -22,12 +23,15 @@ const site = getSiteConfig();
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.siteUrl),
+
   title: {
     default: site.seo.defaultTitle,
     template: site.seo.titleTemplate,
   },
+
   description: site.seo.defaultDescription,
   keywords: site.seo.keywords,
+
   openGraph: {
     title: site.seo.defaultTitle,
     description: site.seo.defaultDescription,
@@ -44,6 +48,7 @@ export const metadata: Metadata = {
     locale: "id_ID",
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
     title: site.seo.defaultTitle,
@@ -53,8 +58,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  colorScheme: "dark",
-  themeColor: "#050505",
+  colorScheme: "light",
+  themeColor: "#F1ECE2",
 };
 
 type RootLayoutProps = {
@@ -64,9 +69,11 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang={site.language}>
-      <body className={`${inter.variable} ${spaceGrotesk.variable} noise-bg`}>
+      <body className={`${archivo.variable} ${sourceSerif.variable}`}>
         <Navbar />
-        {children}
+
+        <main>{children}</main>
+
         <Footer />
       </body>
     </html>
