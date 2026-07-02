@@ -1,70 +1,55 @@
 @import "tailwindcss";
 
 :root {
-  /*
-   * Zennyx Editorial Palette
-   * Warna utama yang akan dipakai oleh design system baru.
-   */
+  /* Zennyx studio palette: quiet frame, game artwork gets the loudest voice. */
+  --color-mist: #e5e5df;
+  --color-mist-light: #f2f1eb;
+  --color-ink: #151815;
+  --color-studio-green: #29483a;
+  --color-studio-green-deep: #1d3329;
+  --color-amber: #d09a36;
+  --color-amber-dark: #a87316;
+  --color-dust: #74786f;
+  --color-line: #c8cac2;
+  --color-brick: #a44b38;
 
-  --paper: #f1ece2;
-  --paper-soft: #faf8f2;
-  --ink: #151515;
-  --asphalt: #262623;
-  --oxide: #a9472e;
-  --olive: #6f7163;
-  --concrete: #b8b1a6;
-  --ash: #77736c;
+  --background: var(--color-mist);
+  --foreground: var(--color-ink);
 
-  /*
-   * Semantic tokens
-   * Gunakan token ini pada komponen baru.
-   */
+  /* Compatibility aliases used by the existing inner pages. */
+  --paper: var(--color-mist-light);
+  --paper-soft: var(--color-mist);
+  --ink: var(--color-ink);
+  --asphalt: var(--color-studio-green-deep);
+  --concrete: #b7baaf;
+  --oxide: var(--color-brick);
+  --olive: var(--color-studio-green);
+  --ash: var(--color-dust);
+  --cyan: var(--color-studio-green);
 
-  --background: var(--paper);
-  --foreground: var(--ink);
+  --surface: var(--color-mist-light);
+  --surface-soft: #d9dbd3;
+  --surface-dark: var(--color-ink);
+  --surface-border: var(--color-line);
+  --border-on-dark: rgba(242, 241, 235, 0.2);
+  --border-on-light: var(--color-line);
 
-  --surface: var(--paper-soft);
-  --surface-soft: #e8e2d7;
-  --surface-dark: var(--asphalt);
-  --surface-border: var(--concrete);
+  --accent: var(--color-studio-green);
+  --accent-hover: var(--color-studio-green-deep);
+  --accent-soft: rgba(41, 72, 58, 0.12);
+  --success: var(--color-studio-green);
+  --danger: var(--color-brick);
+  --warning: var(--color-amber);
 
-  --muted: var(--ash);
-  --muted-soft: #938d83;
-
-  --accent: var(--oxide);
-  --accent-hover: #873824;
-  --accent-soft: rgba(169, 71, 46, 0.12);
-
-  --success: #53634b;
-  --danger: #9d342b;
-
-  /*
-   * Alias sementara.
-   * Variabel lama dipertahankan agar komponen lama tidak langsung error.
-   * Penggunaannya akan dihapus secara bertahap.
-   */
-
-  --cyan: var(--olive);
-
-  /*
-   * Layout tokens
-   */
-
-  --max-width: 1360px;
+  --max-width: 1440px;
   --reading-width: 720px;
-
   --page-padding-mobile: 1.25rem;
-  --page-padding-tablet: 1.75rem;
-  --page-padding-desktop: 3rem;
-
-  /*
-   * Border dan motion
-   */
-
-  --border-width: 1px;
-  --radius-small: 0.25rem;
+  --page-padding-tablet: 2rem;
+  --page-padding-desktop: 4rem;
+  --radius-small: 0;
+  --radius-media: 0;
   --transition-fast: 180ms ease;
-  --transition-medium: 280ms ease;
+  --transition-medium: 320ms ease;
 }
 
 *,
@@ -82,19 +67,11 @@ body {
   min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
-
   background: var(--background);
   color: var(--foreground);
-
-  font-family:
-    var(--font-sans),
-    Arial,
-    Helvetica,
-    sans-serif;
-
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -120,14 +97,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-family:
-    var(--font-sans),
-    Arial,
-    Helvetica,
-    sans-serif;
-
+  color: inherit;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   font-weight: 600;
-  line-height: 0.96;
+  line-height: 1;
   letter-spacing: -0.045em;
 }
 
@@ -162,67 +135,40 @@ canvas {
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--paper-soft);
+  background: var(--color-amber);
+  color: var(--color-ink);
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--color-amber-dark);
   outline-offset: 4px;
 }
 
-/*
- * Typography helpers
- */
-
 .font-display,
 .font-body {
-  font-family:
-    var(--font-sans),
-    Arial,
-    Helvetica,
-    sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
 .font-serif {
-  font-family:
-    var(--font-serif),
-    Georgia,
-    "Times New Roman",
-    serif;
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
 }
 
 .font-mono-accent {
-  font-family:
-    "SFMono-Regular",
-    Consolas,
-    "Liberation Mono",
-    Menlo,
-    monospace;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
-/*
- * Shared editorial helpers
- */
-
+.studio-kicker,
 .editorial-label {
-  font-family:
-    "SFMono-Regular",
-    Consolas,
-    "Liberation Mono",
-    Menlo,
-    monospace;
-
   font-size: 0.6875rem;
-  font-weight: 500;
+  font-weight: 650;
   line-height: 1.4;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
 }
 
 .editorial-divider {
   width: 100%;
-  height: var(--border-width);
+  height: 1px;
   border: 0;
   background: var(--surface-border);
 }
@@ -235,12 +181,57 @@ canvas {
   max-width: var(--reading-width);
 }
 
-.site-header {
-  background-color: var(--paper) !important;
-  color: var(--ink);
+.site-header,
+.site-mobile-navigation {
+  background: rgba(242, 241, 235, 0.96);
+  color: var(--color-ink);
+  backdrop-filter: blur(16px);
 }
 
-.site-mobile-navigation {
-  background-color: var(--paper) !important;
-  color: var(--ink);
+.media-frame {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--radius-media);
+}
+
+.media-frame::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.hard-shadow {
+  box-shadow: 10px 10px 0 var(--color-ink);
+}
+
+.hard-shadow-amber {
+  box-shadow: 10px 10px 0 var(--color-amber);
+}
+
+.zine-rule {
+  height: 3px;
+  border: 0;
+  background: var(--color-ink);
+}
+
+.zine-cut {
+  clip-path: polygon(0 1.5%, 17% 0, 39% 1%, 61% 0, 84% 1.2%, 100% 0, 100% 98.5%, 81% 100%, 57% 99%, 34% 100%, 12% 98.7%, 0 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

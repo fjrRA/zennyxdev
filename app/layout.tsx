@@ -59,7 +59,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: "light",
-  themeColor: "#F1ECE2",
+  themeColor: "#E5E5DF",
 };
 
 type RootLayoutProps = {
@@ -68,7 +68,7 @@ type RootLayoutProps = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang={site.language}>
+    <html lang={site.language} data-scroll-behavior="smooth">
       <body className={`${archivo.variable} ${sourceSerif.variable}`}>
         <Navbar />
 

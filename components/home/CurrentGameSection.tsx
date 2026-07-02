@@ -1,476 +1,74 @@
-// components/home/CurrentGameSection.tsx
-
-import { Button } from "@/components/ui/Button";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-
 import type { Game } from "@/types";
 
-type CurrentGameSectionProps = {
-  featuredGame?: Game;
-};
+type CurrentGameSectionProps = { featuredGame?: Game };
 
-export function CurrentGameSection({
-  featuredGame,
-}: CurrentGameSectionProps) {
+export function CurrentGameSection({ featuredGame }: CurrentGameSectionProps) {
+  if (!featuredGame) return null;
+
   return (
-    <section
-      id="featured-game"
-      className="
-        border-b
-        border-[var(--surface-border)]
-        bg-[var(--paper-soft)]
-        text-[var(--ink)]
-      "
-    >
-      <Container className="py-20 sm:py-24 lg:py-32">
-        <div
-          className="
-            grid
-            gap-6
-            border-b
-            border-[var(--surface-border)]
-            pb-8
-            md:grid-cols-12
-            md:items-end
-            lg:pb-10
-          "
-        >
-          <div className="md:col-span-7">
-            <p
-              className="
-                editorial-label
-                mb-3
-                text-[var(--accent)]
-              "
-            >
-              01 / Active production
+    <section id="featured-game" className="bg-[var(--color-mist)]">
+      <Container className="py-24 sm:py-28 lg:py-36">
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-5">
+            <p className="studio-kicker mb-5 text-[var(--color-brick)]">From the production desk</p>
+            <h2 className="mb-7 max-w-[9ch] text-[clamp(3.2rem,6vw,6.5rem)] leading-[0.87] tracking-[-0.07em]">
+              Inside <span className="font-serif font-normal italic text-[var(--color-studio-green)]">Andara.</span>
+            </h2>
+            <p className="mb-0 max-w-lg font-serif text-xl leading-relaxed text-[var(--color-dust)]">
+              {featuredGame.summary}
             </p>
 
-            <h2
-              className="
-                mb-0
-                text-[clamp(2.5rem,5vw,5.5rem)]
-                font-semibold
-                uppercase
-                leading-[0.9]
-                tracking-[-0.055em]
-              "
-            >
-              Current game
-            </h2>
+            <blockquote className="my-10 border-l-[5px] border-[var(--color-amber)] pl-6 text-xl font-semibold leading-snug tracking-[-0.035em] sm:text-2xl">
+              A fictional city built from narrow alleys, crowded streets, local details, and human conflict.
+            </blockquote>
+
+            <Link href={`/games/${featuredGame.slug}`} className="inline-flex items-center gap-3 border-b-2 border-current pb-1 text-sm font-bold hover:text-[var(--color-brick)]">
+              Read the complete project file <span aria-hidden="true">→</span>
+            </Link>
           </div>
 
-          <p
-            className="
-              mb-0
-              max-w-md
-              text-sm
-              leading-relaxed
-              text-[var(--ash)]
-              md:col-span-4
-              md:col-start-9
-              md:text-right
-            "
-          >
-            Satu proyek aktif menjadi fokus produksi utama sebelum
-            kami bergerak menuju dunia yang lebih besar.
-          </p>
-        </div>
+          <div className="relative lg:col-span-6 lg:col-start-7 lg:pt-12">
+            <div className="relative border-[3px] border-[var(--color-ink)] bg-[var(--color-mist-light)] p-6 shadow-[10px_10px_0_var(--color-studio-green)] sm:p-9">
+              <div className="absolute right-3 -top-8 rotate-2 border-2 border-[var(--color-ink)] bg-[var(--color-amber)] px-4 py-3 shadow-[4px_4px_0_var(--color-ink)] sm:-right-8 sm:px-5 sm:py-4">
+                <p className="studio-kicker mb-1">Next milestone</p>
+                <p className="mb-0 text-lg font-black">{featuredGame.developmentStage.nextMilestone}</p>
+              </div>
 
-        {featuredGame ? (
-          <>
-            <div
-              className="
-                grid
-                border-b
-                border-[var(--surface-border)]
-                lg:grid-cols-12
-              "
-            >
-              <article
-                className="
-                  py-10
-                  sm:py-14
-                  lg:col-span-8
-                  lg:border-r
-                  lg:border-[var(--surface-border)]
-                  lg:pr-12
-                  xl:pr-16
-                "
-              >
-                <div
-                  className="
-                    mb-8
-                    flex
-                    flex-wrap
-                    items-center
-                    gap-x-5
-                    gap-y-2
-                  "
-                >
-                  <p
-                    className="
-                      editorial-label
-                      mb-0
-                      text-[var(--accent)]
-                    "
-                  >
-                    {featuredGame.status}
-                  </p>
+              <div className="border-b-[3px] border-[var(--color-ink)] pb-6 pt-7 sm:pt-3">
+                <p className="studio-kicker mb-3 text-[var(--color-brick)]">Production sheet / current</p>
+                <h3 className="mb-3 text-3xl font-black tracking-[-0.05em] sm:text-4xl">{featuredGame.developmentStage.current}</h3>
+                <p className="mb-0 max-w-xl font-serif leading-relaxed text-[var(--color-dust)]">{featuredGame.developmentStage.notes}</p>
+              </div>
 
-                  <span
-                    aria-hidden="true"
-                    className="
-                      hidden
-                      h-px
-                      w-8
-                      bg-[var(--surface-border)]
-                      sm:block
-                    "
-                  />
-
-                  <p
-                    className="
-                      editorial-label
-                      mb-0
-                      text-[var(--ash)]
-                    "
-                  >
-                    {featuredGame.targetBuild}
-                  </p>
-                </div>
-
-                <h3
-                  className="
-                    mb-8
-                    max-w-[11ch]
-                    text-balance
-                    text-[clamp(3rem,7vw,7rem)]
-                    font-semibold
-                    uppercase
-                    leading-[0.88]
-                    tracking-[-0.065em]
-                  "
-                >
-                  {featuredGame.title}
-                </h3>
-
-                <p
-                  className="
-                    font-serif
-                    mb-0
-                    max-w-2xl
-                    text-lg
-                    leading-relaxed
-                    text-[var(--foreground)]
-                    sm:text-xl
-                  "
-                >
-                  {featuredGame.summary}
-                </p>
-
-                <div className="mt-10 sm:mt-12">
-                  <Button
-                    href={`/games/${featuredGame.slug}`}
-                  >
-                    View project
-
-                    <span aria-hidden="true">
-                      →
-                    </span>
-                  </Button>
-                </div>
-              </article>
-
-              <aside
-                className="
-                  bg-[var(--asphalt)]
-                  px-6
-                  py-10
-                  text-[var(--paper)]
-                  sm:px-8
-                  sm:py-12
-                  lg:col-span-4
-                  lg:px-10
-                  lg:py-14
-                "
-              >
-                <div
-                  className="
-                    border-b
-                    border-[rgba(241,236,226,0.22)]
-                    pb-8
-                  "
-                >
-                  <p
-                    className="
-                      editorial-label
-                      mb-3
-                      text-[var(--concrete)]
-                    "
-                  >
-                    Current stage
-                  </p>
-
-                  <p
-                    className="
-                      mb-0
-                      text-xl
-                      font-semibold
-                      leading-snug
-                      sm:text-2xl
-                    "
-                  >
-                    {featuredGame.developmentStage.current}
-                  </p>
-                </div>
-
-                <div
-                  className="
-                    border-b
-                    border-[rgba(241,236,226,0.22)]
-                    py-8
-                  "
-                >
-                  <p
-                    className="
-                      editorial-label
-                      mb-3
-                      text-[var(--concrete)]
-                    "
-                  >
-                    Next milestone
-                  </p>
-
-                  <p
-                    className="
-                      mb-0
-                      text-xl
-                      font-semibold
-                      leading-snug
-                      sm:text-2xl
-                    "
-                  >
-                    {featuredGame.developmentStage.nextMilestone}
-                  </p>
-                </div>
-
-                <div className="pt-8">
-                  <p
-                    className="
-                      editorial-label
-                      mb-5
-                      text-[var(--concrete)]
-                    "
-                  >
-                    Current gameplay focus
-                  </p>
-
-                  <ol>
-                    {featuredGame.gameplayFocus.points
-                      .slice(0, 5)
-                      .map((item, index) => {
-                        const itemNumber = String(index + 1).padStart(
-                          2,
-                          "0",
-                        );
-
-                        return (
-                          <li
-                            key={item}
-                            className="
-                              grid
-                              grid-cols-[2.5rem_1fr]
-                              gap-3
-                              border-t
-                              border-[rgba(241,236,226,0.22)]
-                              py-4
-                            "
-                          >
-                            <span
-                              className="
-                                font-mono-accent
-                                text-[0.6875rem]
-                                text-[var(--concrete)]
-                              "
-                            >
-                              {itemNumber}
-                            </span>
-
-                            <span
-                              className="
-                                text-sm
-                                font-medium
-                                leading-relaxed
-                              "
-                            >
-                              {item}
-                            </span>
-                          </li>
-                        );
-                      })}
-                  </ol>
-                </div>
-              </aside>
+              <div className="pt-7">
+                <p className="studio-kicker mb-3 text-[var(--color-studio-green)]">Things that must feel good first</p>
+                <ol>
+                  {featuredGame.gameplayFocus.points.slice(0, 6).map((item, index) => (
+                    <li key={item} className="grid grid-cols-[2.5rem_1fr] items-center border-b border-black/25 py-3 text-sm font-semibold">
+                      <span className="font-serif text-lg italic text-[var(--color-brick)]">{String(index + 1).padStart(2, "0")}</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
             </div>
 
-            <dl
-              className="
-                grid
-                border-b
-                border-[var(--surface-border)]
-                sm:grid-cols-2
-                lg:grid-cols-4
-              "
-            >
-              <div
-                className="
-                  py-5
-                  sm:pr-6
-                  lg:py-6
-                "
-              >
-                <dt
-                  className="
-                    editorial-label
-                    text-[var(--ash)]
-                  "
-                >
-                  Genre
-                </dt>
-
-                <dd
-                  className="
-                    mt-2
-                    text-sm
-                    font-medium
-                    leading-relaxed
-                  "
-                >
-                  {featuredGame.genre.join(" / ")}
-                </dd>
-              </div>
-
-              <div
-                className="
-                  border-t
-                  border-[var(--surface-border)]
-                  py-5
-                  sm:border-l
-                  sm:border-t-0
-                  sm:pl-6
-                  lg:py-6
-                "
-              >
-                <dt
-                  className="
-                    editorial-label
-                    text-[var(--ash)]
-                  "
-                >
-                  Setting
-                </dt>
-
-                <dd
-                  className="
-                    mt-2
-                    text-sm
-                    font-medium
-                    leading-relaxed
-                  "
-                >
-                  {featuredGame.setting.name}
-                </dd>
-              </div>
-
-              <div
-                className="
-                  border-t
-                  border-[var(--surface-border)]
-                  py-5
-                  sm:pr-6
-                  lg:border-l
-                  lg:border-t-0
-                  lg:pl-6
-                  lg:py-6
-                "
-              >
-                <dt
-                  className="
-                    editorial-label
-                    text-[var(--ash)]
-                  "
-                >
-                  Platform
-                </dt>
-
-                <dd
-                  className="
-                    mt-2
-                    text-sm
-                    font-medium
-                    leading-relaxed
-                  "
-                >
-                  {featuredGame.platforms.join(" / ")}
-                </dd>
-              </div>
-
-              <div
-                className="
-                  border-t
-                  border-[var(--surface-border)]
-                  py-5
-                  sm:border-l
-                  sm:pl-6
-                  lg:border-t-0
-                  lg:py-6
-                "
-              >
-                <dt
-                  className="
-                    editorial-label
-                    text-[var(--ash)]
-                  "
-                >
-                  Production
-                </dt>
-
-                <dd
-                  className="
-                    mt-2
-                    text-sm
-                    font-medium
-                    leading-relaxed
-                  "
-                >
-                  {featuredGame.productionType}
-                </dd>
-              </div>
+            <dl className="mt-12 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-3 lg:ml-8">
+              {[
+                ["World", featuredGame.setting.name],
+                ["Platform", featuredGame.platforms.join(" / ")],
+                ["Release", featuredGame.targetRelease],
+              ].map(([label, value]) => (
+                <div key={label} className="border-t-2 border-[var(--color-ink)] pt-3">
+                  <dt className="studio-kicker text-[var(--color-dust)]">{label}</dt>
+                  <dd className="mt-2 text-sm font-bold">{value}</dd>
+                </div>
+              ))}
             </dl>
-          </>
-        ) : (
-          <div
-            className="
-              border-b
-              border-[var(--surface-border)]
-              py-16
-            "
-          >
-            <p
-              className="
-                font-serif
-                mb-0
-                max-w-2xl
-                text-xl
-                leading-relaxed
-                text-[var(--ash)]
-              "
-            >
-              Belum ada proyek aktif yang dipublikasikan.
-            </p>
           </div>
-        )}
+        </div>
       </Container>
     </section>
   );
