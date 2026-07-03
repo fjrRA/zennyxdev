@@ -1,9 +1,9 @@
 {
   "primaryContact": {
-    "href": "mailto:hello@zennyxstudio.com",
+    "href": "mailto:zennyxinteractivestudio@gmail.com",
     "type": "email",
     "label": "Email",
-    "value": "hello@zennyxstudio.com",
+    "value": "zennyxinteractivestudio@gmail.com",
     "description": "For general inquiries, collaboration, and studio-related contact."
   },
   "contactMessage": {
@@ -13,10 +13,10 @@
   },
   "links": [
     {
-      "href": "mailto:hello@zennyxstudio.com",
+      "href": "mailto:zennyxinteractivestudio@gmail.com",
       "name": "Email",
       "type": "email",
-      "label": "hello@zennyxstudio.com",
+      "label": "zennyxinteractivestudio@gmail.com",
       "order": 1,
       "isActive": true,
       "isPrimary": true

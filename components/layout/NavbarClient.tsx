@@ -26,7 +26,7 @@ export function NavbarClient({ shortName }: NavbarClientProps) {
       <Container>
         <div className="flex min-h-18 items-center justify-between gap-6">
           <Link href="/" onClick={() => setOpen(false)} className="flex items-center gap-3" aria-label={`${shortName} homepage`}>
-            <Image src={logoIcon} alt="" width={34} height={34} priority className="size-[34px] border border-[#141816] object-contain" />
+            <Image src={logoIcon} alt="" width={34} height={34} priority className="size-[34px] border-[0.25px] rounded-lg border-[#e0e0e0] object-contain" />
             <span>
               <strong className="block text-base leading-none tracking-[-0.035em]">{shortName}</strong>
               <span className="mt-1 block font-mono text-[0.55rem] uppercase tracking-[0.14em] text-[#59615d]">Interactive game studio</span>
